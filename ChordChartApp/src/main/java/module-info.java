@@ -11,4 +11,6 @@ module com.oneandahalfasians.chordchartapp {
 
     opens com.oneandahalfasians.chordchartapp to javafx.fxml;
     exports com.oneandahalfasians.chordchartapp;
+    exports com.oneandahalfasians.chordchartapp.controller;
+    opens com.oneandahalfasians.chordchartapp.controller to javafx.fxml;
 }
