@@ -26,7 +26,7 @@
    </top>
    <center>
        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <fx:include source="chart/chartListView.fxml"></fx:include>
+           <fx:include fx:id="chartView" source="chart/chartListView.fxml"></fx:include>
        </ScrollPane>
    </center>
    <bottom>
