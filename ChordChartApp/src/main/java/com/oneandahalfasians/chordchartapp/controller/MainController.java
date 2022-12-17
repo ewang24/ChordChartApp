@@ -1,5 +1,6 @@
 package com.oneandahalfasians.chordchartapp.controller;
 
+import com.oneandahalfasians.chordchartapp.controller.chart.ChartController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
@@ -10,10 +11,9 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private Text testText;
+    private ChartController chartController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        testText.setText("This is a test");
     }
 }

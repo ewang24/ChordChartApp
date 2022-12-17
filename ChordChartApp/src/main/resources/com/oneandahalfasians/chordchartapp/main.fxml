@@ -4,26 +4,16 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 
-<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
-<!--            xmlns:fx="http://javafx.com/fxml"-->
-<!--            fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController"-->
-<!--            prefHeight="400.0" prefWidth="600.0"-->
-<!--&gt;-->
-<!--</AnchorPane>-->
-
-
-<?import javafx.scene.text.Text?>
-<BorderPane
-        maxHeight="-Infinity"
-        maxWidth="-Infinity"
-        minHeight="-Infinity"
-        minWidth="-Infinity"
-        prefHeight="400.0"
-        prefWidth="600.0"
-        xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController"
+<BorderPane maxHeight="-Infinity"
+            maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController"
 >
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -35,13 +25,9 @@
       </ToolBar>
    </top>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-                <Text fx:id="testText"></Text>
-            </VBox>
-         </content>
-      </ScrollPane>
+       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <fx:include source="chart/chartListView.fxml"></fx:include>
+       </ScrollPane>
    </center>
    <bottom>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
