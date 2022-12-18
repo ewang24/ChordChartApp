@@ -8,13 +8,17 @@ import com.oneandahalfasians.chordchartapp.data.entities.Intro;
 import com.oneandahalfasians.chordchartapp.data.entities.key.Accidental;
 import com.oneandahalfasians.chordchartapp.data.entities.key.Key;
 import com.oneandahalfasians.chordchartapp.data.entities.key.KeyLetter;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Blank;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -36,5 +40,16 @@ public class MainController implements Initializable {
         chart.setIntro(new Intro());
         chart.setEnding(new Ending());
 
+    }
+
+    private List<Lyric> generateLyric(String string){
+        List<Lyric> lyricList = new ArrayList<>();
+        Arrays.stream(string.split(" ")).forEach(l ->
+                {
+                    lyricList.add(new Lyric(l));
+                    lyricList.add(new Blank());
+                }
+            );
+        return lyricList;
     }
 }
