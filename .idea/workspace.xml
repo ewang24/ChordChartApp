@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Extension.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Quality.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/Blank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/Break.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/Chord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/Lyric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/LyricLine.java" afterDir="false" />
+    <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="Testing IntelliJ git commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/Chart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/ChordLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/ChordLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/ChordLyricWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/ChordLyricWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/Instrumental.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/Instrumental.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/LyricLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/AnchorPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/LyricLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/LyricLine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +80,30 @@
       <option name="presentableId" value="Default" />
       <updated>1671237678676</updated>
     </task>
+    <task id="LOCAL-00001" summary="Testing IntelliJ git commit">
+      <created>1671331606378</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671331606378</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Testing IntelliJ git commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing IntelliJ git commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
