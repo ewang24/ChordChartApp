@@ -17,6 +17,7 @@ public class ChordChartApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Chord Chart App");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
