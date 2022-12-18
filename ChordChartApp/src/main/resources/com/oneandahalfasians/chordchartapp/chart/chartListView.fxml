@@ -13,6 +13,5 @@
           fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.ChartController"
           fx:id="container"
 >
-    <Text>THIS IS A TEST</Text>
 
 </VBox>

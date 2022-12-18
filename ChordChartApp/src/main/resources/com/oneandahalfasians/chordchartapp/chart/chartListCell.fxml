@@ -11,5 +11,4 @@
       fx:id="vBox"
       fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.ChartListViewCell"
 >
-    <Text>test</Text>
 </VBox>
