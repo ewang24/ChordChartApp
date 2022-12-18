@@ -5,12 +5,13 @@ import com.oneandahalfasians.chordchartapp.data.entities.Ending;
 import com.oneandahalfasians.chordchartapp.data.entities.Intro;
 import com.oneandahalfasians.chordchartapp.data.entities.key.Key;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Chart {
 
     private String title;
-    private List<Key> keyList;
+    private List<Key> keyList = new ArrayList<>();
     private int numberOfBeats;
     private int unitBeat;
 

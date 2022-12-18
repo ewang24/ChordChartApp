@@ -1,5 +1,8 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
+import com.oneandahalfasians.chordchartapp.data.entities.line.ChordLine;
+import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
+
 public class ChordLyricWrapper {
 
     private final ChordLine chordLine;

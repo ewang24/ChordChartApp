@@ -1,6 +1,6 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
-import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+import com.oneandahalfasians.chordchartapp.data.entities.line.ChordLine;
 
 import java.util.List;
 

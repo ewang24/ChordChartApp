@@ -9,6 +9,9 @@ public class Key {
         this.keyLetter = keyLetter;
         this.accidental = accidental;
     }
+    public Key(KeyLetter keyLetter) {
+        this.keyLetter = keyLetter;
+    }
 
     public KeyLetter getKeyLetter() {
         return keyLetter;
