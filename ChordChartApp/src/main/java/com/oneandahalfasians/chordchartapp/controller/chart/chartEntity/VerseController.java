@@ -5,6 +5,7 @@ import com.oneandahalfasians.chordchartapp.data.entities.Verse;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -15,7 +16,7 @@ public class VerseController implements Initializable {
     /*
         FXML Fields
      */
-    public HBox lyricBox;
+    public VBox lyricBox;
 
     public HBox chordBox;
 
@@ -38,8 +39,10 @@ public class VerseController implements Initializable {
         for (ChordLyricWrapper wrapper : verse.getLines()) {
             //TODO: wrapper.getChordLine()
             if(wrapper.getLyricLine() != null){
+                HBox lineBox = new HBox();
+                lyricBox.getChildren().add(lineBox);
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
-                    lyricBox.getChildren().add(new Text(lyric.getLyric()));
+                    lineBox.getChildren().add(new Text(lyric.getLyric()));
                 }
             }
         }

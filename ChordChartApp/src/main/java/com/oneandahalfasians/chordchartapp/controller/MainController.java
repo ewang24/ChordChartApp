@@ -43,10 +43,10 @@ public class MainController implements Initializable {
         lyricLine.getLyricList().addAll(generateLyric("This is Evan's first song!!!!"));
 
         LyricLine lyric2Line = new LyricLine();
-        lyricLine.getLyricList().addAll(generateLyric("This song is super cool"));
+        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool"));
 
         LyricLine lyric3Line = new LyricLine();
-        lyricLine.getLyricList().addAll(generateLyric("No really, it is please believe me!"));
+        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!"));
 
         //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
         //It will automatically create the ChordLyricWrapper for you and put it into the list.

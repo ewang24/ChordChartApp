@@ -14,7 +14,19 @@
     <HBox fx:id="chordBox">
 
     </HBox>
-    <HBox fx:id="lyricBox">
-
-    </HBox>
+    <VBox fx:id="lyricBox">
+        <Text>1</Text>
+        <Text>2</Text>
+        <Text>3</Text>
+        <HBox>
+            <Text>
+                First HBOX
+            </Text>
+        </HBox>
+        <HBox>
+            <Text>
+                Second HBOX
+            </Text>
+        </HBox>
+    </VBox>
 </VBox>
