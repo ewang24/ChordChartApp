@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,8 +53,17 @@ public class ChartController implements Initializable {
         try {
             for (ChartEntity chartEntity : chartEntityList) {
                 FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartListCell.fxml"));
+                fxmlLoader.setControllerFactory(new Callback<Class<?>, Object>() {
+                    @Override
+                    public ChartListViewCell call(Class<?> aClass) {
+                        return new ChartListViewCell(chartEntity);
+                    }
+                });
+                
                 Parent row = fxmlLoader.load();
+
                 container.getChildren().add(row);
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
