@@ -38,10 +38,28 @@ public class MainController implements Initializable {
         chart.setTempo(42069);
         chart.setIntro(new Intro());
         chart.setEnding(new Ending());
+
+        //Make a few lines of lyrics:
         LyricLine lyricLine = new LyricLine();
         lyricLine.getLyricLine().addAll(generateLyric("This is Evan's first song!!!!"));
+
+        LyricLine lyric2Line = new LyricLine();
+        lyricLine.getLyricLine().addAll(generateLyric("This song is super cool"));
+
+        LyricLine lyric3Line = new LyricLine();
+        lyricLine.getLyricLine().addAll(generateLyric("No really, it is please believe me!"));
+
+        //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
+        //It will automatically create the ChordLyricWrapper for you and put it into the list.
+        //ChordLyricWrapper wrapper = new ChordLyricWrapper(null,lyricLine);
+
         Verse verse = new Verse();
-        ChordLyricWrapper wrapper = new ChordLyricWrapper(null,lyricLine);
+        //Add in all of the lyrics to the verse
+        verse.addLine(null, lyricLine);
+        verse.addLine(null, lyric2Line);
+        verse.addLine(null, lyric3Line);
+
+        chart.getEntityList().add(verse);
     }
 
     private List<Lyric> generateLyric(String string){
