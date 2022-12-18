@@ -20,7 +20,7 @@ public class Chart {
     private Intro intro;
     private Ending ending;
 
-    List<ChartEntity> entityList;
+    List<ChartEntity> entityList = new ArrayList<>();
 
     public String getTitle() {
         return title;

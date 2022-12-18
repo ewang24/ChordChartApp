@@ -1,6 +1,8 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
-public class ChartEntity {
+import javafx.scene.Node;
+
+public abstract class ChartEntity {
 
     private String headerName;
 
@@ -12,4 +14,6 @@ public class ChartEntity {
         this.headerName = headerName;
         return this;
     }
+
+    public abstract Node render();
 }

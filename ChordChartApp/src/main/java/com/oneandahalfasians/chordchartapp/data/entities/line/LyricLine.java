@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LyricLine {
-    private List<Lyric> lyricLine = new ArrayList<>();
+    private List<Lyric> lyricList = new ArrayList<>();
 
     public LyricLine() {
     }
 
-    public List<Lyric> getLyricLine() {
-        return lyricLine;
+    public List<Lyric> getLyricList() {
+        return lyricList;
     }
 
-    public void setLyricLine(List<Lyric> lyricLine) {
-        this.lyricLine = lyricLine;
+    public void setLyricList(List<Lyric> lyricList) {
+        this.lyricList = lyricList;
     }
 }

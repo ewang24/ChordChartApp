@@ -12,7 +12,6 @@ import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,13 +40,13 @@ public class MainController implements Initializable {
 
         //Make a few lines of lyrics:
         LyricLine lyricLine = new LyricLine();
-        lyricLine.getLyricLine().addAll(generateLyric("This is Evan's first song!!!!"));
+        lyricLine.getLyricList().addAll(generateLyric("This is Evan's first song!!!!"));
 
         LyricLine lyric2Line = new LyricLine();
-        lyricLine.getLyricLine().addAll(generateLyric("This song is super cool"));
+        lyricLine.getLyricList().addAll(generateLyric("This song is super cool"));
 
         LyricLine lyric3Line = new LyricLine();
-        lyricLine.getLyricLine().addAll(generateLyric("No really, it is please believe me!"));
+        lyricLine.getLyricList().addAll(generateLyric("No really, it is please believe me!"));
 
         //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
         //It will automatically create the ChordLyricWrapper for you and put it into the list.
@@ -61,7 +60,7 @@ public class MainController implements Initializable {
 
         chart.getEntityList().add(verse);
 
-        chartViewController.setChartEntityList()
+        chartViewController.setChart(chart);
     }
 
     private List<Lyric> generateLyric(String string){
