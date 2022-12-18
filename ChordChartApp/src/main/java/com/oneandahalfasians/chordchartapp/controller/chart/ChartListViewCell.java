@@ -36,6 +36,7 @@ public class ChartListViewCell extends Node implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        vBox.getChildren().add(new Text(chart.toString()));
+        chart
+        vBox.getChildren().add(new Text(chart.()));
     }
 }

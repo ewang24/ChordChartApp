@@ -60,6 +60,8 @@ public class MainController implements Initializable {
         verse.addLine(null, lyric3Line);
 
         chart.getEntityList().add(verse);
+
+        chartViewController.setChartEntityList()
     }
 
     private List<Lyric> generateLyric(String string){

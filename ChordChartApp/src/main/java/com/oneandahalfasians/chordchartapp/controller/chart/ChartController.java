@@ -1,5 +1,6 @@
 package com.oneandahalfasians.chordchartapp.controller.chart;
 
+import com.oneandahalfasians.chordchartapp.data.Chart;
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.collections.FXCollections;
@@ -36,19 +37,14 @@ public class ChartController implements Initializable {
         Instance fields
      */
 
-    private List<ChartEntity> chartEntityList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    public List<ChartEntity> getChartEntityList() {
-        return chartEntityList;
-    }
-
-    public ChartController setChartEntityList(List<ChartEntity> chartEntityList) {
-        this.chartEntityList = chartEntityList;
+    public ChartController setChartEntityList(Chart chart) {
+        List<ChartEntity> chartEntityList = chart.getEntityList();
 
         try {
             for (ChartEntity chartEntity : chartEntityList) {
