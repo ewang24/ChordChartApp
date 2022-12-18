@@ -3,9 +3,12 @@ package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.ChordLyricWrapper;
 import com.oneandahalfasians.chordchartapp.data.entities.Verse;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -16,9 +19,14 @@ public class VerseController implements Initializable {
     /*
         FXML Fields
      */
+    @FXML
     public VBox lyricBox;
 
+    @FXML
     public HBox chordBox;
+
+    @FXML
+    private Text header;
 
     /*
         Instance Fields
@@ -36,13 +44,19 @@ public class VerseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        header.setText(verse.getHeaderName());
+        header.setFont(Font.font("arial", FontWeight.BOLD, 20));
+
         for (ChordLyricWrapper wrapper : verse.getLines()) {
             //TODO: wrapper.getChordLine()
             if(wrapper.getLyricLine() != null){
                 HBox lineBox = new HBox();
                 lyricBox.getChildren().add(lineBox);
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
-                    lineBox.getChildren().add(new Text(lyric.getLyric()));
+                    Text lyricText = new Text(lyric.getLyric());
+                    lyricText.setStyle("-fx-padding: 0 0 0 100;");
+                    lyricText.setStyle("-fx-margin: 0 0 0 100;");
+                    lineBox.getChildren().add(lyricText);
                 }
             }
         }

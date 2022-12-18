@@ -53,6 +53,7 @@ public class MainController implements Initializable {
         //ChordLyricWrapper wrapper = new ChordLyricWrapper(null,lyricLine);
 
         Verse verse = new Verse();
+        verse.setHeaderName("Verse 1");
         //Add in all of the lyrics to the verse
         verse.addLine(null, lyricLine);
         verse.addLine(null, lyric2Line);
