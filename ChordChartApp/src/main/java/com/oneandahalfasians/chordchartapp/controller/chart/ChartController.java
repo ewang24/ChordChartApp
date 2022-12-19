@@ -8,7 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +43,24 @@ public class ChartController implements Initializable {
 
     public ChartController setChart(Chart chart) {
         this.chart = chart;
+        if(chart.getTitle() != null){
+            Text title = new Text(chart.getTitle());
+            title.setFont(Font.font("arial", FontWeight.BOLD,  30));
+            container.getChildren().add(title);
+        }
+
+        HBox infoBox = new HBox();
+        if(chart.getKeyList() != null && !chart.getKeyList().isEmpty()){
+            infoBox.getChildren().add(new Text(chart.getKeySignature()));
+        }
+
+        infoBox.getChildren().add(new Text(chart.getTimeSignature()));
+        infoBox.getChildren().add(new Text(chart.getTempoString()));
+
+        if(!infoBox.getChildren().isEmpty()){
+            container.getChildren().add(infoBox);
+        }
+
         List<ChartEntity> chartEntityList = chart.getEntityList();
 
         try {

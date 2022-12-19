@@ -7,6 +7,7 @@ import com.oneandahalfasians.chordchartapp.data.entities.key.Key;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Chart {
 
@@ -99,6 +100,14 @@ public class Chart {
      */
 
     public String getTimeSignature(){
-        return numberOfBeats + "/" + unitBeat;
+        return "Time - " + numberOfBeats + "/" + unitBeat;
+    }
+
+    public String getKeySignature(){
+        return "Key - " + getKeyList().stream().map(Key::toString).collect(Collectors.joining(" -> "));
+    }
+
+    public String getTempoString(){
+        return "Tempo - " + getTempo();
     }
 }

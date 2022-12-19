@@ -8,5 +8,4 @@ public enum KeyLetter {
     E,
     F,
     G;
-
 }

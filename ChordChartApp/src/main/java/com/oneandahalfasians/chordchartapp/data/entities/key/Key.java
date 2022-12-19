@@ -30,4 +30,9 @@ public class Key {
         this.accidental = accidental;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return keyLetter.toString() + accidental.getValue();
+    }
 }
