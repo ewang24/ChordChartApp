@@ -5,19 +5,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChartListViewCell extends Node implements Initializable {
+public class ChartEntityRowController extends Node implements Initializable {
 
     @FXML
     VBox vBox;
 
     private ChartEntity chartEntity;
 
-    public ChartListViewCell(ChartEntity chartEntity) {
+    public ChartEntityRowController(ChartEntity chartEntity) {
         this.chartEntity = chartEntity;
     }
 
@@ -25,7 +24,7 @@ public class ChartListViewCell extends Node implements Initializable {
         return chartEntity;
     }
 
-    public ChartListViewCell setChartEntity(ChartEntity chartEntity) {
+    public ChartEntityRowController setChartEntity(ChartEntity chartEntity) {
         this.chartEntity = chartEntity;
         return this;
     }

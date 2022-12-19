@@ -69,8 +69,8 @@ public class ChartController implements Initializable {
         //Create a row for each of the chart entities (verses, choruses, bridge, etc.)
         try {
             for (ChartEntity chartEntity : chartEntityList) {
-                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartListCell.fxml"));
-                fxmlLoader.setControllerFactory(a -> new ChartListViewCell(chartEntity));
+                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartEntityRow.fxml"));
+                fxmlLoader.setControllerFactory(a -> new ChartEntityRowController(chartEntity));
                 
                 Parent row = fxmlLoader.load();
 

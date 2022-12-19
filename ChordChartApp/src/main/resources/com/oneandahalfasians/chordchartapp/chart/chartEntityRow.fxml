@@ -9,6 +9,6 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:id="vBox"
-      fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.ChartListViewCell"
+      fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.ChartEntityRowController"
 >
 </VBox>
