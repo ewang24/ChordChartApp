@@ -43,12 +43,15 @@ public class ChartController implements Initializable {
 
     public ChartController setChart(Chart chart) {
         this.chart = chart;
+
+        //Display chart title if present
         if(chart.getTitle() != null){
             Text title = new Text(chart.getTitle());
             title.setFont(Font.font("arial", FontWeight.BOLD,  30));
             container.getChildren().add(title);
         }
 
+        //Generate a horizontal display for the chart info
         HBox infoBox = new HBox();
         if(chart.getKeyList() != null && !chart.getKeyList().isEmpty()){
             infoBox.getChildren().add(new Text(chart.getKeySignature()));
@@ -63,6 +66,7 @@ public class ChartController implements Initializable {
 
         List<ChartEntity> chartEntityList = chart.getEntityList();
 
+        //Create a row for each of the chart entities (verses, choruses, bridge, etc.)
         try {
             for (ChartEntity chartEntity : chartEntityList) {
                 FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartListCell.fxml"));
