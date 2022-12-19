@@ -1,0 +1,11 @@
+.text-entry{
+    -fx-padding: 0 0 0 15;
+    -fx-background-color: slateblue;
+    -fx-text-fill: white;
+}
+
+#styledButton{
+
+-fx-background-color: slateblue;
+-fx-text-fill: white;
+}

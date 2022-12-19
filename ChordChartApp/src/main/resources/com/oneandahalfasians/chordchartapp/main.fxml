@@ -8,6 +8,8 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController">
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -35,9 +37,11 @@
       </ToolBar>
    </top>
    <center>
-       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+       <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Text fx:id="styledText">Styled Text</Text>
+           <Button fx:id="styledButton">Styled Button</Button>
            <fx:include fx:id="chartView" source="chart/chartListView.fxml" />
-       </ScrollPane>
+       </VBox>
    </center>
    <bottom>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">

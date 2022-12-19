@@ -12,9 +12,9 @@ public class ChordChartApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ChordChartApplication.class.getResource("main.fxml"));
-//        fxmlLoader.setControllerFactory(t -> new MainController(new PersonModel()));
 
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add("../../resources/com.oneandahalfasians.chordchartapp/css/app.css");
         stage.setTitle("Chord Chart App");
         stage.setScene(scene);
         stage.setMaximized(true);

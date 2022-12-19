@@ -54,8 +54,8 @@ public class VerseController implements Initializable {
                 lyricBox.getChildren().add(lineBox);
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
                     Text lyricText = new Text(lyric.getLyric());
-                    lyricText.setStyle("-fx-padding: 0 0 0 100;");
-                    lyricText.setStyle("-fx-margin: 0 0 0 100;");
+                    lyricText.getStyleClass().add("text-entry");
+
                     lineBox.getChildren().add(lyricText);
                 }
             }

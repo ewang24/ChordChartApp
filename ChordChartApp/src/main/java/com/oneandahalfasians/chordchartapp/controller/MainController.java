@@ -12,6 +12,8 @@ import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    public Button styledButton;
+    public Text styledText;
     @FXML
     private Parent chartView;
 
@@ -29,6 +33,9 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        styledButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+        styledText.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+
         Chart chart = new Chart();
         chart.setTitle("Evan's First Song");
         chart.getKeyList().add(new Key(KeyLetter.E, Accidental.SHARP));
