@@ -2,8 +2,12 @@ package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChordLyricWrapper;
 import com.oneandahalfasians.chordchartapp.data.entities.Verse;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Blank;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Break;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Chord;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
+import com.oneandahalfasians.chordchartapp.view.CSS;
+import com.oneandahalfasians.chordchartapp.view.TextUtils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -63,6 +67,10 @@ public class VerseController implements Initializable {
 //                                    field.getText(), 0.0D) + 10);
 //                        }
 //                    });
+                    chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
+
+                    processTextField(chordText);
+
                     chordBox.getChildren().add(chordText);
                 }
             }
@@ -70,6 +78,21 @@ public class VerseController implements Initializable {
             if(wrapper.getLyricLine() != null) {
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
                     TextField lyricText = new TextField(lyric.getLyric());
+                    processTextField(lyricText);
+
+                    String lyricClass = null;
+                    if(lyric instanceof Blank){
+                        lyricClass = CSS.BLANK_LYRIC_TEXT_CLASS;
+                    }
+                    else if(lyric instanceof Break){
+                        lyricClass = CSS.BREAK_LYRIC_TEXT_CLASS;
+                    }
+                    else{
+                        lyricClass = CSS.LYRIC_TEXT_CLASS;
+                    }
+
+                    lyricText.getStyleClass().add(lyricClass);
+
                     lyricBox.getChildren().add(lyricText);
                 }
             }
@@ -77,4 +100,20 @@ public class VerseController implements Initializable {
             verseBox.getChildren().add(lyricBox);
         }
     }
+
+    private void processTextField(TextField textField){
+
+        //Listener that will fire when the text field is updated.
+        //Readjusts the text field size to fit the text better.
+        textField.textProperty().addListener((ob, o, n) ->
+            textField.setPrefColumnCount(3)
+//            textField.setPrefColumnCount(textField.getText().length() +1)
+        );
+
+        //Manually trigger the resize initially so that things line up correctly at first
+//        textField.setPrefColumnCount(textField.getText().length() +1);
+        textField.setPrefWidth(TextUtils.computeTextWidth(textField.getFont(), textField.getText(), 0D));
+
+    }
+
 }
