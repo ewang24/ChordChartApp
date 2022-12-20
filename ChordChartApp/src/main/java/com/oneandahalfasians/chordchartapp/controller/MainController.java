@@ -3,12 +3,8 @@ package com.oneandahalfasians.chordchartapp.controller;
 import com.oneandahalfasians.chordchartapp.controller.chart.ChartController;
 import com.oneandahalfasians.chordchartapp.data.Chart;
 import com.oneandahalfasians.chordchartapp.data.entities.*;
-import com.oneandahalfasians.chordchartapp.data.entities.key.Accidental;
-import com.oneandahalfasians.chordchartapp.data.entities.key.Key;
-import com.oneandahalfasians.chordchartapp.data.entities.key.KeyLetter;
-import com.oneandahalfasians.chordchartapp.data.entities.line.Blank;
-import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
-import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
+import com.oneandahalfasians.chordchartapp.data.entities.key.*;
+import com.oneandahalfasians.chordchartapp.data.entities.line.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -48,6 +44,11 @@ public class MainController implements Initializable {
         chart.setEnding(new Ending());
 
         //Make a few lines of lyrics:
+        ChordLine chordLine = new ChordLine();
+        chordLine.getChords().addAll(Arrays.asList(new Chord(new Key(KeyLetter.E, Accidental.SHARP), Quality.MAJOR),
+                                                    new Chord(new Key(KeyLetter.B, Accidental.SHARP), Quality.DOMINANT),
+                                                    new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR, new Extension(Accidental.SHARP, 11))));
+
         LyricLine lyricLine = new LyricLine();
         lyricLine.getLyricList().addAll(generateLyric("This is Evan's first song!!!!"));
 
@@ -63,10 +64,10 @@ public class MainController implements Initializable {
 
         Verse verse = new Verse();
         verse.setHeaderName("Verse 1");
-        //Add in all of the lyrics to the verse
-        verse.addLine(null, lyricLine);
-        verse.addLine(null, lyric2Line);
-        verse.addLine(null, lyric3Line);
+        //Add in every of the lyrics to the verse
+        verse.addLine(chordLine, lyricLine);
+        verse.addLine(chordLine, lyric2Line);
+        verse.addLine(chordLine, lyric3Line);
 
         chart.getEntityList().add(verse);
 

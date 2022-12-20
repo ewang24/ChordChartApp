@@ -11,9 +11,8 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.VerseController"
       prefHeight="400.0" prefWidth="600.0">
-    <Text fx:id="header"></Text>
-    <HBox fx:id="chordBox">
-    </HBox>
-    <VBox fx:id="lyricBox">
+    <Text fx:id="header">
+    </Text>
+    <VBox fx:id="verseBox">
     </VBox>
 </VBox>

@@ -33,6 +33,6 @@ public class Key {
 
     @Override
     public String toString() {
-        return keyLetter.toString() + accidental.getValue();
+        return keyLetter.toString() + accidental.getSymbol();
     }
 }

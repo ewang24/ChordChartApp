@@ -2,6 +2,7 @@ package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChordLyricWrapper;
 import com.oneandahalfasians.chordchartapp.data.entities.Verse;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Chord;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,11 +20,7 @@ public class VerseController implements Initializable {
     /*
         FXML Fields
      */
-    @FXML
-    public VBox lyricBox;
-
-    @FXML
-    public HBox chordBox;
+    public VBox verseBox;
 
     @FXML
     private Text header;
@@ -48,17 +45,24 @@ public class VerseController implements Initializable {
         header.setFont(Font.font("arial", FontWeight.BOLD, 20));
 
         for (ChordLyricWrapper wrapper : verse.getLines()) {
-            //TODO: wrapper.getChordLine()
-            if(wrapper.getLyricLine() != null){
-                HBox lineBox = new HBox();
-                lyricBox.getChildren().add(lineBox);
+            HBox chordBox = new HBox();
+            if (wrapper.getChordLine() != null) {
+                for (Chord chord : wrapper.getChordLine().getChords()) {
+                    Text chordText = new Text(chord.toString());
+                    chordBox.getChildren().add(chordText);
+                }
+            }
+            HBox lyricBox = new HBox();
+            if(wrapper.getLyricLine() != null) {
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
                     Text lyricText = new Text(lyric.getLyric());
                     lyricText.getStyleClass().add("text-entry");
                     lyricText.setId("test");
-                    lineBox.getChildren().add(lyricText);
+                    lyricBox.getChildren().add(lyricText);
                 }
             }
+            verseBox.getChildren().add(chordBox);
+            verseBox.getChildren().add(lyricBox);
         }
     }
 }

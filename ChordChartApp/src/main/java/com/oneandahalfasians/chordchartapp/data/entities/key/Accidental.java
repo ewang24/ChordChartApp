@@ -4,13 +4,13 @@ public enum Accidental {
     FLAT("b"),
     SHARP("#");
 
-    final String value;
+    final String symbol;
 
-    Accidental(String value) {
-        this.value = value;
+    Accidental(String symbol) {
+        this.symbol = symbol;
     }
 
-    public String getValue(){
-        return value;
+    public String getSymbol(){
+        return symbol;
     }
 }
