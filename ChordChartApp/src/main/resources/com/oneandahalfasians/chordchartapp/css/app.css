@@ -1,11 +1,20 @@
-.text-entry{
-    -fx-padding: 0 0 0 15;
-    -fx-background-color: slateblue;
-    -fx-text-fill: white;
+.root{
+    -fx-background: white;
+}
+.text-field {
+    -fx-text-box-border: transparent;
+    -fx-effect: null;
+    -fx-background-color: -fx-control-inner-background;
+    -fx-background-insets: 0;
+    -fx-padding: 1 3 1 3;
+}
+
+.text-field:focused {
+    -fx-focus-color: transparent;
 }
 
 #styledButton{
 
--fx-background-color: slateblue;
+-fx-background-color: red;
 -fx-text-fill: white;
 }

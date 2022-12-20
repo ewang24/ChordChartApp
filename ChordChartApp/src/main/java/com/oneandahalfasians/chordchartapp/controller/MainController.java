@@ -31,7 +31,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        styledButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
-        styledText.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+//        styledText.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
         fancytext.setId("fancytext");
 
         Chart chart = new Chart();
