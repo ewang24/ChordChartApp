@@ -3,6 +3,7 @@ package com.oneandahalfasians.chordchartapp.view;
 import com.oneandahalfasians.chordchartapp.ChordChartApplication;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class FXMLHelper {
 
@@ -13,5 +14,9 @@ public class FXMLHelper {
      */
     public static URL load(String view){
         return ChordChartApplication.class.getResource(view);
+    }
+
+    public static String loadCSS(String css){
+        return Objects.requireNonNull(ChordChartApplication.class.getResource(css)).toExternalForm();
     }
 }

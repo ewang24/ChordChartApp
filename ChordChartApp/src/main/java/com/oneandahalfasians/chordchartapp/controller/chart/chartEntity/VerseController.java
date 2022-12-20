@@ -55,7 +55,7 @@ public class VerseController implements Initializable {
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
                     Text lyricText = new Text(lyric.getLyric());
                     lyricText.getStyleClass().add("text-entry");
-
+                    lyricText.setId("test");
                     lineBox.getChildren().add(lyricText);
                 }
             }

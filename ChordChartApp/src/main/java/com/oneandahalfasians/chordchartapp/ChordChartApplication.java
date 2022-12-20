@@ -1,6 +1,7 @@
 package com.oneandahalfasians.chordchartapp;
 
 import com.oneandahalfasians.chordchartapp.controller.MainController;
+import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ public class ChordChartApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(ChordChartApplication.class.getResource("main.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add("../../resources/com.oneandahalfasians.chordchartapp/css/app.css");
+        scene.getStylesheets().add(FXMLHelper.loadCSS("css/app.css"));
         stage.setTitle("Chord Chart App");
         stage.setScene(scene);
         stage.setMaximized(true);

@@ -25,6 +25,7 @@ public class MainController implements Initializable {
 
     public Button styledButton;
     public Text styledText;
+    public Text fancytext;
     @FXML
     private Parent chartView;
 
@@ -35,6 +36,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        styledButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
         styledText.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+        fancytext.setId("fancytext");
 
         Chart chart = new Chart();
         chart.setTitle("Evan's First Song");

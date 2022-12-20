@@ -39,6 +39,7 @@
    <center>
        <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
            <Text fx:id="styledText">Styled Text</Text>
+           <Text fx:id="fancytext">Fancy Text</Text>
            <Button fx:id="styledButton">Styled Button</Button>
            <fx:include fx:id="chartView" source="chart/chartListView.fxml" />
        </VBox>

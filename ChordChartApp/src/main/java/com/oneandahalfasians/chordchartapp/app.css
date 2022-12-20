@@ -1,0 +1,37 @@
+.root{
+    -fx-background-color: slateblue;
+}
+
+.text-entry{
+    -fx-font-size: 32px;
+    -fx-padding: 0 0 0 15;
+    -fx-background-color: slateblue;
+    -fx-text-fill: white;
+}
+
+#test{
+    -fx-font-size: 32px;
+    -fx-padding: 0 0 0 15;
+    -fx-background-color: slateblue;
+    -fx-text-fill: white;
+}
+
+#styledButton{
+    -fx-background-color: slateblue;
+    -fx-text-fill: white;
+}
+
+
+#styledText{
+   -fx-font-size: 32px;
+    -fx-padding: 0 0 0 15;
+    -fx-background-color: slateblue;
+    -fx-text-fill: white;
+}
+
+#fancytext {
+    -fx-font: 100px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+}
