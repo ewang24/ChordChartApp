@@ -61,13 +61,13 @@ public class MainController implements Initializable {
                                                     new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR, new Extension(Accidental.SHARP, 11))));
 
         LyricLine lyricLine = new LyricLine();
-        lyricLine.getLyricList().addAll(generateLyric("This is Evan's first song!!!!"));
+        lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordLine));
 
         LyricLine lyric2Line = new LyricLine();
-        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool"));
+        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool", chordLine));
 
         LyricLine lyric3Line = new LyricLine();
-        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!"));
+        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!", chordLine));
 
         //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
         //It will automatically create the ChordLyricWrapper for you and put it into the list.
@@ -76,23 +76,30 @@ public class MainController implements Initializable {
         Verse verse = new Verse();
         verse.setHeaderName("Verse 1");
         //Add in every of the lyrics to the verse
-        verse.addLine(chordLine, lyricLine);
-        verse.addLine(chordLine, lyric2Line);
-        verse.addLine(chordLine, lyric3Line);
+        verse.addLine(lyricLine);
+        verse.addLine(lyric2Line);
+        verse.addLine(lyric3Line);
 
         chart.getEntityList().add(verse);
 
         chartViewController.setChart(chart);
     }
 
-    private List<Lyric> generateLyric(String string){
+    private List<Lyric> generateLyric(String string, ChordLine chordLine){
         List<Lyric> lyricList = new ArrayList<>();
-        Arrays.stream(string.split(" ")).forEach(l ->
-                {
-                    lyricList.add(new Lyric(l));
-                    lyricList.add(new Blank());
-                }
-            );
+        String[] split = string.split(" ");
+        for (int i = 0; i < split.length; i++) {
+            String l = split[i];
+
+            Lyric lyric = new Lyric(l);
+
+            if(i < chordLine.getChords().size()){
+                lyric.setAnchorPoint(new AnchorPoint(lyric, chordLine.getChords().get(i)));
+            }
+
+            lyricList.add(lyric);
+            lyricList.add(new Blank());
+        }
         return lyricList;
     }
 }

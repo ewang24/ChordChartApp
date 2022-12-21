@@ -28,8 +28,8 @@ public class Verse extends ChartEntity {
         return this;
     }
 
-    public void addLine(ChordLine chordLine, LyricLine lyricLine){
-        getLines().add(new ChordLyricWrapper(chordLine, lyricLine));
+    public void addLine(LyricLine lyricLine){
+        getLines().add(new ChordLyricWrapper(lyricLine));
     }
 
     @Override

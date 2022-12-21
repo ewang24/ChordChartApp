@@ -8,6 +8,11 @@ public class ChordLyricWrapper {
     private final ChordLine chordLine;
     private final LyricLine lyricLine;
 
+    public ChordLyricWrapper(LyricLine lyricLine) {
+        this.chordLine = null;
+        this.lyricLine = lyricLine;
+    }
+
     public ChordLyricWrapper(ChordLine chordLine, LyricLine lyricLine) {
         this.chordLine = chordLine;
         this.lyricLine = lyricLine;

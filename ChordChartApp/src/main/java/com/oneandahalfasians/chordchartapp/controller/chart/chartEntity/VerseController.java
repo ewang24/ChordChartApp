@@ -12,6 +12,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -57,32 +58,26 @@ public class VerseController implements Initializable {
                 "    -fx-border-insets: 5;\n" +
                 "    -fx-border-width: 2;\n" +
                 "    -fx-border-style: dashed;";
+
+        String styles2 = "-fx-border-color: pink;\n" +
+                "    -fx-border-insets: 5;\n" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-border-style: dashed;";
         for (ChordLyricWrapper wrapper : verse.getLines()) {
-            HBox chordBox = new HBox();
-            chordBox.setStyle(styles);
-            chordBox.setStyle("-fx-spacing: " + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING);
-            if (wrapper.getChordLine() != null) {
-                for (Chord chord : wrapper.getChordLine().getChords()) {
-                    TextField chordText = new TextField(chord.toString());
-//                    chordText.textProperty().addListener(new ChangeListener<String>() {
-//                        @Override
-//                        public void changed(ObservableValue<? extends String> ob, String o,
-//                                            String n) {
-//                            // expand the textfield
-//                            chordText.setPrefWidth(TextUtils.computeTextWidth(field.getFont(),
-//                                    field.getText(), 0.0D) + 10);
-//                        }
-//                    });
-                    chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
+//            HBox chordBox = new HBox();
+//            chordBox.setStyle(styles);
+//            chordBox.setStyle("-fx-spacing: " + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING);
+//            if (wrapper.getChordLine() != null) {
+//                for (Chord chord : wrapper.getChordLine().getChords()) {
+//
+//
+//
+//                    chordBox.getChildren().add(chordText);
+//                }
+//            }
 
-                    processTextField(chordText);
-
-                    chordBox.getChildren().add(chordText);
-                }
-            }
             HBox lyricBox = new HBox();
             lyricBox.setStyle(styles);
-
             if(wrapper.getLyricLine() != null) {
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
                     TextField lyricText = new TextField(lyric.getLyric());
@@ -102,10 +97,34 @@ public class VerseController implements Initializable {
 
                     lyricText.getStyleClass().add(lyricClass);
 
-                    lyricBox.getChildren().add(lyricText);
+                    VBox lyricColumn = new VBox();
+                    if(lyric.getAnchorPoint() != null){
+                        Chord anchoredChord = lyric.getAnchorPoint().getChord();
+
+                        TextField chordText = new TextField(anchoredChord.toString());
+//                    chordText.textProperty().addListener(new ChangeListener<String>() {
+//                        @Override
+//                        public void changed(ObservableValue<? extends String> ob, String o,
+//                                            String n) {
+//                            // expand the textfield
+//                            chordText.setPrefWidth(TextUtils.computeTextWidth(field.getFont(),
+//                                    field.getText(), 0.0D) + 10);
+//                        }
+//                    });
+                        chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
+
+                        processTextField(chordText);
+
+                        lyricColumn.getChildren().add(chordText);
+                    }
+                    lyricColumn.getChildren().add(lyricText);
+                    lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
+                    lyricColumn.setStyle(styles2);
+
+                    lyricBox.getChildren().add(lyricColumn);
                 }
             }
-            verseBox.getChildren().add(chordBox);
+//            verseBox.getChildren().add(chordBox);
             verseBox.getChildren().add(lyricBox);
         }
     }
