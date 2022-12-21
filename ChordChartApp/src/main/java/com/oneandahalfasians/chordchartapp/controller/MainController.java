@@ -55,19 +55,18 @@ public class MainController implements Initializable {
         chart.setEnding(new Ending());
 
         //Make a few lines of lyrics:
-        ChordLine chordLine = new ChordLine();
-        chordLine.getChords().addAll(Arrays.asList(new Chord(new Key(KeyLetter.E, Accidental.SHARP), Quality.MAJOR),
+        List<Chord> chordList = (Arrays.asList(new Chord(new Key(KeyLetter.E, Accidental.SHARP), Quality.MAJOR),
                                                     new Chord(new Key(KeyLetter.B, Accidental.SHARP), Quality.DOMINANT),
                                                     new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR, new Extension(Accidental.SHARP, 11))));
 
         LyricLine lyricLine = new LyricLine();
-        lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordLine));
+        lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordList));
 
         LyricLine lyric2Line = new LyricLine();
-        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool", chordLine));
+        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool", chordList));
 
         LyricLine lyric3Line = new LyricLine();
-        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!", chordLine));
+        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!", chordList));
 
         //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
         //It will automatically create the ChordLyricWrapper for you and put it into the list.
@@ -85,7 +84,7 @@ public class MainController implements Initializable {
         chartViewController.setChart(chart);
     }
 
-    private List<Lyric> generateLyric(String string, ChordLine chordLine){
+    private List<Lyric> generateLyric(String string, List<Chord> chordLine){
         List<Lyric> lyricList = new ArrayList<>();
         String[] split = string.split(" ");
         for (int i = 0; i < split.length; i++) {
@@ -93,12 +92,14 @@ public class MainController implements Initializable {
 
             Lyric lyric = new Lyric(l);
 
-            if(i < chordLine.getChords().size()){
-                lyric.setAnchorPoint(new AnchorPoint(lyric, chordLine.getChords().get(i)));
+            Blank blank = new Blank();
+            if(i < chordLine.size()){
+                lyric.setAnchorPoint(new AnchorPoint(lyric, chordLine.get(i)));
+                blank.setAnchorPoint(new AnchorPoint(lyric, chordLine.get(i)));
             }
 
             lyricList.add(lyric);
-            lyricList.add(new Blank());
+            lyricList.add(blank);
         }
         return lyricList;
     }

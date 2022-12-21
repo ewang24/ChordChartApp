@@ -1,15 +1,9 @@
 package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
-import com.oneandahalfasians.chordchartapp.data.entities.ChordLyricWrapper;
 import com.oneandahalfasians.chordchartapp.data.entities.Verse;
-import com.oneandahalfasians.chordchartapp.data.entities.line.Blank;
-import com.oneandahalfasians.chordchartapp.data.entities.line.Break;
-import com.oneandahalfasians.chordchartapp.data.entities.line.Chord;
-import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
+import com.oneandahalfasians.chordchartapp.data.entities.line.*;
 import com.oneandahalfasians.chordchartapp.view.CSS;
 import com.oneandahalfasians.chordchartapp.view.TextUtils;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -63,7 +57,7 @@ public class VerseController implements Initializable {
                 "    -fx-border-insets: 5;\n" +
                 "    -fx-border-width: 1;\n" +
                 "    -fx-border-style: dashed;";
-        for (ChordLyricWrapper wrapper : verse.getLines()) {
+        for (LyricLine lyricLine : verse.getLines()) {
 //            HBox chordBox = new HBox();
 //            chordBox.setStyle(styles);
 //            chordBox.setStyle("-fx-spacing: " + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING);
@@ -78,8 +72,8 @@ public class VerseController implements Initializable {
 
             HBox lyricBox = new HBox();
             lyricBox.setStyle(styles);
-            if(wrapper.getLyricLine() != null) {
-                for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
+            if(lyricLine.getLyricList() != null) {
+                for (Lyric lyric : lyricLine.getLyricList()) {
                     TextField lyricText = new TextField(lyric.getLyric());
                     processTextField(lyricText);
 
