@@ -50,11 +50,17 @@ public class VerseController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         header.setText(verse.getHeaderName());
         header.setFont(Font.font("arial", FontWeight.BOLD, 20));
-        verseBox.setStyle("-fx-padding: 0 10 0 10");
+        verseBox.setStyle(String.format("-fx-padding: 0 %s 0 %s", CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING, CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING));
 
+
+        String styles = "-fx-border-color: blue;\n" +
+                "    -fx-border-insets: 5;\n" +
+                "    -fx-border-width: 2;\n" +
+                "    -fx-border-style: dashed;";
         for (ChordLyricWrapper wrapper : verse.getLines()) {
             HBox chordBox = new HBox();
-            chordBox.setStyle("-fx-spacing: 10");
+            chordBox.setStyle(styles);
+            chordBox.setStyle("-fx-spacing: " + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING);
             if (wrapper.getChordLine() != null) {
                 for (Chord chord : wrapper.getChordLine().getChords()) {
                     TextField chordText = new TextField(chord.toString());
@@ -75,6 +81,8 @@ public class VerseController implements Initializable {
                 }
             }
             HBox lyricBox = new HBox();
+            lyricBox.setStyle(styles);
+
             if(wrapper.getLyricLine() != null) {
                 for (Lyric lyric : wrapper.getLyricLine().getLyricList()) {
                     TextField lyricText = new TextField(lyric.getLyric());
@@ -83,6 +91,7 @@ public class VerseController implements Initializable {
                     String lyricClass = null;
                     if(lyric instanceof Blank){
                         lyricClass = CSS.BLANK_LYRIC_TEXT_CLASS;
+                        lyricText.setPrefWidth(0);
                     }
                     else if(lyric instanceof Break){
                         lyricClass = CSS.BREAK_LYRIC_TEXT_CLASS;
@@ -112,7 +121,7 @@ public class VerseController implements Initializable {
 
         //Manually trigger the resize initially so that things line up correctly at first
 //        textField.setPrefColumnCount(textField.getText().length() +1);
-        textField.setPrefWidth(TextUtils.computeTextWidth(textField.getFont(), textField.getText(), 0D));
+        textField.setPrefWidth(TextUtils.computeTextWidth(textField.getFont(), textField.getText(), 0D) + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING * 2);
 
     }
 

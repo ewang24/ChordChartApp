@@ -46,8 +46,10 @@
       </ToolBar>
    </top>
    <center>
-       <VBox maxHeight="1.7976931348623157E308"
-             maxWidth="1.7976931348623157E308"
+<!--       maxHeight="1.7976931348623157E308"-->
+<!--       maxWidth="1.7976931348623157E308"-->
+       <VBox
+
              minHeight="-Infinity"
              minWidth="-Infinity"
              BorderPane.alignment="CENTER"
