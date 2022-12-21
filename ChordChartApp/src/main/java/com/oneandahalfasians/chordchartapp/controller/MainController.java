@@ -60,13 +60,13 @@ public class MainController implements Initializable {
                                                     new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR, new Extension(Accidental.SHARP, 11))));
 
         LyricLine lyricLine = new LyricLine();
-        lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordList));
+        lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordList, lyricLine));
 
         LyricLine lyric2Line = new LyricLine();
-        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool", chordList));
+        lyric2Line.getLyricList().addAll(generateLyric("This song is super cool", chordList, lyric2Line));
 
         LyricLine lyric3Line = new LyricLine();
-        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!", chordList));
+        lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!", chordList, lyric3Line));
 
         //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
         //It will automatically create the ChordLyricWrapper for you and put it into the list.
@@ -84,15 +84,15 @@ public class MainController implements Initializable {
         chartViewController.setChart(chart);
     }
 
-    private List<Lyric> generateLyric(String string, List<Chord> chordLine){
+    private List<Lyric> generateLyric(String string, List<Chord> chordLine, LyricLine lyricLine){
         List<Lyric> lyricList = new ArrayList<>();
         String[] split = string.split(" ");
         for (int i = 0; i < split.length; i++) {
             String l = split[i];
 
-            Lyric lyric = new Lyric(l);
+            Lyric lyric = new Lyric(l, lyricLine);
 
-            Blank blank = new Blank();
+            Blank blank = new Blank(lyricLine);
             if(i < chordLine.size()){
                 lyric.setAnchorPoint(new AnchorPoint(lyric, chordLine.get(i)));
                 blank.setAnchorPoint(new AnchorPoint(lyric, chordLine.get(i)));
