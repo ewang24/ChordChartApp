@@ -3,13 +3,14 @@ package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.Verse;
 import com.oneandahalfasians.chordchartapp.data.entities.line.*;
 import com.oneandahalfasians.chordchartapp.view.CSS;
+import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import com.oneandahalfasians.chordchartapp.view.TextUtils;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -20,6 +21,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class VerseController implements Initializable {
@@ -78,26 +80,28 @@ public class VerseController implements Initializable {
             HBox lyricBox = new HBox();
             lyricBox.setStyle(styles);
             if(lyricLine.getLyricList() != null) {
-                for (Lyric lyric : lyricLine.getLyricList()) {
+                List<Lyric> lyricList = lyricLine.getLyricList();
+                for (int i = 0; i < lyricList.size(); i++) {
+                    Lyric lyric = lyricList.get(i);
                     TextField lyricText = new TextField(lyric.getLyric());
                     setTextFieldWidthListener(lyricText);
 
                     String lyricClass = null;
-                    if(lyric instanceof Blank){
+                    if (lyric instanceof Blank) {
                         lyricClass = CSS.BLANK_LYRIC_TEXT_CLASS;
                         lyricText.setPrefWidth(0);
-                    }
-                    else if(lyric instanceof Break){
+                    } else if (lyric instanceof Break) {
                         lyricClass = CSS.BREAK_LYRIC_TEXT_CLASS;
-                    }
-                    else{
+                    } else {
                         lyricClass = CSS.LYRIC_TEXT_CLASS;
+                        FXMLHelper.data(lyricText, Lyric.LYRIC_INDEX, i);
+                        FXMLHelper.data(lyricText, Lyric.PARENT, lyricBox);
                     }
 
                     lyricText.getStyleClass().add(lyricClass);
 
                     VBox lyricColumn = new VBox();
-                    if(lyric.getAnchorPoint() != null){
+                    if (lyric.getAnchorPoint() != null) {
                         Chord anchoredChord = lyric.getAnchorPoint().getChord();
 
                         TextField chordText = new TextField(anchoredChord.toString());
@@ -143,16 +147,32 @@ public class VerseController implements Initializable {
         textField.setPrefWidth(TextUtils.computeTextWidth(textField.getFont(), textField.getText(), 0D) + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING * 2);
     }
 
-    private void setTextFieldKeyListeners(TextField textField, boolean isLyric){
+    private void setTextFieldKeyListeners(final TextField textField, boolean isLyric){
         if(isLyric){
-            textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            textField.addEventFilter(KeyEvent.ANY, new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
-                    event.consume();
-                    System.out.println("");
+
                     KeyCode keyCode = event.getCode();
                     if(keyCode == KeyCode.SPACE){
+                        event.consume();
+                        Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
+                        if(index != null){
+                            ObservableList<Node> children = ((HBox) FXMLHelper.data(textField, Lyric.PARENT)).getChildren();
+                            if(index == children.size() - 1){
+                                //TODO: add new child here
+                            }
+                            else{
+                                VBox nextColumn = ((VBox)children.get(index + 2));
+                                int lastIndex = nextColumn.getChildren().size() - 1;
+                                TextField nextTextField = (TextField) nextColumn.getChildren().get(lastIndex);
+                                nextTextField.requestFocus();
+                                nextTextField.selectEnd();
+                            }
+                        }
                         System.out.println("Space pressed");
+//                        textField.get
+
                     }
                 }
             });

@@ -2,6 +2,9 @@ package com.oneandahalfasians.chordchartapp.data.entities.line;
 
 public class Lyric {
 
+    public static final String LYRIC_INDEX = "lyricIndex";
+    public static final String PARENT = "parent";
+
     private LyricLine lyricLine;
     private String lyric;
     private AnchorPoint anchorPoint;
