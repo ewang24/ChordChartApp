@@ -1,13 +1,12 @@
 package com.oneandahalfasians.chordchartapp.data.entities.line;
 
 public class Lyric {
+
+    private LyricLine lyricLine;
     private String lyric;
     private AnchorPoint anchorPoint;
 
-    public Lyric() {
-    }
-
-    public Lyric(String lyric) {
+    public Lyric(String lyric, LyricLine lyricLine) {
         this.lyric = lyric;
     }
 
@@ -25,5 +24,13 @@ public class Lyric {
 
     public void setAnchorPoint(AnchorPoint anchorPoint) {
         this.anchorPoint = anchorPoint;
+    }
+
+    public LyricLine getLyricLine() {
+        return lyricLine;
+    }
+
+    public void setLyricLine(LyricLine lyricLine) {
+        this.lyricLine = lyricLine;
     }
 }

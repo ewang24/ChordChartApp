@@ -1,7 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController;
-import com.oneandahalfasians.chordchartapp.data.entities.line.ChordLine;
+import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,15 +12,14 @@ import java.util.List;
 
 public class Instrumental extends ChartEntity {
 
-    List<ChordLine> chordLines;
+    List<LyricLine> chordLines;
 
-    public List<ChordLine> getChordLines() {
+    public List<LyricLine> getChordLines() {
         return chordLines;
     }
 
-    public Instrumental setChordLines(List<ChordLine> chordLines) {
+    public void setChordLines(List<LyricLine> chordLines) {
         this.chordLines = chordLines;
-        return this;
     }
 
     @Override
