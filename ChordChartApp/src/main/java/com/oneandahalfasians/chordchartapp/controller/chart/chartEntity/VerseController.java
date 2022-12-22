@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -149,26 +150,41 @@ public class VerseController implements Initializable {
 
     private void setTextFieldKeyListeners(final TextField textField, boolean isLyric){
         if(isLyric){
-            textField.addEventFilter(KeyEvent.ANY, new EventHandler<KeyEvent>() {
+            textField.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<InputEvent>() {
                 @Override
-                public void handle(KeyEvent event) {
+                public void handle(InputEvent event) {
 
-                    KeyCode keyCode = event.getCode();
-                    if(keyCode == KeyCode.SPACE){
-                        event.consume();
+                    if(!(event instanceof KeyEvent)){
+                        return;
+                    }
+
+
+                    event.consume();
+                    KeyCode keyCode = ((KeyEvent) event).getCode();
+                    if(keyCode.equals(KeyCode.SPACE)){
                         Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
                         if(index != null){
                             ObservableList<Node> children = ((HBox) FXMLHelper.data(textField, Lyric.PARENT)).getChildren();
-                            if(index == children.size() - 1){
-                                //TODO: add new child here
+                            TextField lyricText = new TextField();
+                            setTextFieldWidthListener(lyricText);
+
+                            String styles2 = "-fx-border-color: pink;\n" +
+                                    "    -fx-border-insets: 5;\n" +
+                                    "    -fx-border-width: 1;\n" +
+                                    "    -fx-border-style: dashed;";
+
+                            VBox lyricColumn = new VBox();
+                            lyricColumn.getChildren().add(lyricText);
+                            lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
+                            lyricColumn.setStyle(styles2);
+
+                            children.add(index + 1, lyricColumn);
+
+                            for (int i = 0; i < children.size(); i++) {
+                                FXMLHelper.data(children.get(i), Lyric.LYRIC_INDEX, i);
                             }
-                            else{
-                                VBox nextColumn = ((VBox)children.get(index + 2));
-                                int lastIndex = nextColumn.getChildren().size() - 1;
-                                TextField nextTextField = (TextField) nextColumn.getChildren().get(lastIndex);
-                                nextTextField.requestFocus();
-                                nextTextField.selectEnd();
-                            }
+                            
+                            lyricText.requestFocus();
                         }
                         System.out.println("Space pressed");
 //                        textField.get
