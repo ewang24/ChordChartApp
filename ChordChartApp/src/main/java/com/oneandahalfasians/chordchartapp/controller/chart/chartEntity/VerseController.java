@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -60,10 +61,7 @@ public class VerseController implements Initializable {
                 "    -fx-border-width: 2;\n" +
                 "    -fx-border-style: dashed;";
 
-        String styles2 = "-fx-border-color: pink;\n" +
-                "    -fx-border-insets: 5;\n" +
-                "    -fx-border-width: 1;\n" +
-                "    -fx-border-style: dashed;";
+
         for (LyricLine lyricLine : verse.getLines()) {
 //            HBox chordBox = new HBox();
 //            chordBox.setStyle(styles);
@@ -77,34 +75,54 @@ public class VerseController implements Initializable {
 //                }
 //            }
 
-            HBox lyricBox = new HBox();
-            lyricBox.setStyle(styles);
+            HBox lyricRow = new HBox();
+//            lyricRow.setStyle(styles);
             if(lyricLine.getLyricList() != null) {
                 List<Lyric> lyricList = lyricLine.getLyricList();
                 for (int i = 0; i < lyricList.size(); i++) {
                     Lyric lyric = lyricList.get(i);
-                    TextField lyricText = new TextField(lyric.getLyric());
-                    setTextFieldWidthListener(lyricText);
 
-                    String lyricClass = null;
-                    if (lyric instanceof Blank) {
-                        lyricClass = CSS.BLANK_LYRIC_TEXT_CLASS;
-                        lyricText.setPrefWidth(0);
-                    } else if (lyric instanceof Break) {
-                        lyricClass = CSS.BREAK_LYRIC_TEXT_CLASS;
-                    } else {
-                        lyricClass = CSS.LYRIC_TEXT_CLASS;
-                        FXMLHelper.data(lyricText, Lyric.LYRIC_INDEX, i);
-                        FXMLHelper.data(lyricText, Lyric.PARENT, lyricBox);
-                    }
 
-                    lyricText.getStyleClass().add(lyricClass);
+                    lyricRow.getChildren().add(generateLyricColumn(lyric, lyricRow, i));
+                }
+            }
+//            verseBox.getChildren().add(chordBox);
+            verseBox.getChildren().add(lyricRow);
+        }
+    }
 
-                    VBox lyricColumn = new VBox();
-                    if (lyric.getAnchorPoint() != null) {
-                        Chord anchoredChord = lyric.getAnchorPoint().getChord();
 
-                        TextField chordText = new TextField(anchoredChord.toString());
+    private VBox generateLyricColumn(Lyric lyric, HBox lyricRow, int index){
+        return generateLyricColumn(lyric, lyricRow, index, false);
+    }
+
+    private VBox generateLyricColumn(Lyric lyric, HBox lyricRow, int index, boolean requestFocus){
+
+        TextField lyricText = new TextField(lyric.getLyric());
+        setTextFieldWidthListener(lyricText);
+
+        String lyricClass = null;
+        if (lyric instanceof Blank) {
+            lyricClass = CSS.BLANK_LYRIC_TEXT_CLASS;
+            lyricText.setPrefWidth(0);
+        } else if (lyric instanceof Break) {
+            lyricClass = CSS.BREAK_LYRIC_TEXT_CLASS;
+        } else {
+            lyricClass = CSS.LYRIC_TEXT_CLASS;
+            FXMLHelper.data(lyricText, Lyric.LYRIC_INDEX, index);
+            FXMLHelper.data(lyricText, Lyric.PARENT, lyricRow);
+        }
+
+        lyricText.getStyleClass().add(lyricClass);
+        lyricText.setAlignment(Pos.CENTER);
+
+        setTextFieldKeyListeners(lyricText, true);
+
+        VBox lyricColumn = new VBox();
+        if (lyric.getAnchorPoint() != null) {
+            Chord anchoredChord = lyric.getAnchorPoint().getChord();
+
+            TextField chordText = new TextField(anchoredChord.toString());
 //                    chordText.textProperty().addListener(new ChangeListener<String>() {
 //                        @Override
 //                        public void changed(ObservableValue<? extends String> ob, String o,
@@ -114,25 +132,28 @@ public class VerseController implements Initializable {
 //                                    field.getText(), 0.0D) + 10);
 //                        }
 //                    });
-                        chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
+            chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
+            chordText.setAlignment(Pos.CENTER);
 
-                        setTextFieldWidthListener(chordText);
+            setTextFieldWidthListener(chordText);
 
-                        lyricColumn.getChildren().add(chordText);
-                    }
-
-                    lyricColumn.getChildren().add(lyricText);
-                    lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
-                    lyricColumn.setStyle(styles2);
-
-                    setTextFieldKeyListeners(lyricText, true);
-
-                    lyricBox.getChildren().add(lyricColumn);
-                }
-            }
-//            verseBox.getChildren().add(chordBox);
-            verseBox.getChildren().add(lyricBox);
+            lyricColumn.getChildren().add(chordText);
         }
+
+        String styles2 = "-fx-border-color: pink;\n" +
+                "    -fx-border-insets: 5;\n" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-border-style: dashed;";
+
+        lyricColumn.getChildren().add(lyricText);
+        lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
+//        lyricColumn.setStyle(styles2);
+
+        if(requestFocus){
+            lyricText.requestFocus();
+        }
+
+        return lyricColumn;
     }
 
     private void setTextFieldWidthListener(TextField textField){
@@ -149,26 +170,36 @@ public class VerseController implements Initializable {
 
     private void setTextFieldKeyListeners(final TextField textField, boolean isLyric){
         if(isLyric){
-            textField.addEventFilter(KeyEvent.ANY, new EventHandler<KeyEvent>() {
+            textField.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<InputEvent>() {
                 @Override
-                public void handle(KeyEvent event) {
+                public void handle(InputEvent event) {
 
-                    KeyCode keyCode = event.getCode();
-                    if(keyCode == KeyCode.SPACE){
-                        event.consume();
+                    if(!(event instanceof KeyEvent)){
+                        return;
+                    }
+
+//                    event.consume();
+                    KeyCode keyCode = ((KeyEvent) event).getCode();
+                    if(keyCode.equals(KeyCode.SPACE)){
+                        if(textField.getText() == null || textField.getText().trim().isBlank()){
+                            return;
+                        }
+
                         Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
                         if(index != null){
-                            ObservableList<Node> children = ((HBox) FXMLHelper.data(textField, Lyric.PARENT)).getChildren();
-                            if(index == children.size() - 1){
-                                //TODO: add new child here
+                            HBox lyricRow = (HBox) FXMLHelper.data(textField, Lyric.PARENT);
+                            ObservableList<Node> children = lyricRow.getChildren();
+
+                            int newIndex = index + 1;
+                            VBox lyricColumn = generateLyricColumn(new Lyric(null), lyricRow, newIndex, true);
+                            children.add(newIndex, lyricColumn);
+
+                            for (int i = 0; i < children.size(); i++) {
+                                FXMLHelper.data(children.get(i), Lyric.LYRIC_INDEX, i);
                             }
-                            else{
-                                VBox nextColumn = ((VBox)children.get(index + 2));
-                                int lastIndex = nextColumn.getChildren().size() - 1;
-                                TextField nextTextField = (TextField) nextColumn.getChildren().get(lastIndex);
-                                nextTextField.requestFocus();
-                                nextTextField.selectEnd();
-                            }
+
+                            lyricColumn.getChildren().get(lyricColumn.getChildren().size() - 1).requestFocus();
+                            
                         }
                         System.out.println("Space pressed");
 //                        textField.get
