@@ -63,7 +63,7 @@ public class VerseController implements Initializable {
 
 
         for (LyricLine lyricLine : verse.getLines()) {
-//            HBox chordBox = new HBox();
+//            HBox chordBox = new HBox(); hi
 //            chordBox.setStyle(styles);
 //            chordBox.setStyle("-fx-spacing: " + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING);
 //            if (wrapper.getChordLine() != null) {
