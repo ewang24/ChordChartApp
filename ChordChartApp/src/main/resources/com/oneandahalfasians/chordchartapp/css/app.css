@@ -3,12 +3,11 @@
 }
 
 .chord-text{
-    -fx-text-fill: white;
-    -fx-background-color: blue;
-    -fx-background: red;
+    /*-fx-text-fill: white;
+    -fx-background-color: blue;*/
     -fx-text-box-border: transparent;
     -fx-effect: null;
-    /*-fx-background-color: -fx-control-inner-background;*/
+    -fx-background-color: -fx-control-inner-background;
     -fx-background-insets: 0;
     -fx-padding: 0 0 0 0;
 }
@@ -18,25 +17,25 @@
     -fx-background: red;*/
     -fx-text-box-border: transparent;
     -fx-effect: null;
-    /*-fx-background-color: -fx-control-inner-background;*/
+    -fx-background-color: -fx-control-inner-background;
     -fx-background-insets: 0;
     -fx-padding: 0 0 0 0;
 }
 
 .blank-lyric-text{
-    -fx-background-color: green;
-    -fx-background: green;
+    /*-fx-background-color: green;
+    -fx-background: green;*/
     -fx-text-box-border: transparent;
     -fx-effect: null;
-    /*-fx-background-color: -fx-control-inner-background;*/
+    -fx-background-color: -fx-control-inner-background;
     -fx-background-insets: 0;
     -fx-padding: 0 0 0 0;
 
 }
 
 .break-lyric-text{
-    -fx-background-color: green;
-    -fx-background: green;
+    /*-fx-background-color: green;
+    -fx-background: green;*/
     -fx-text-box-border: transparent;
     -fx-effect: null;
     /*-fx-background-color: -fx-control-inner-background;*/
@@ -45,24 +44,8 @@
 
 }
 
-.text-field2 {
-    -fx-background-color: red;
-    -fx-background: red;
-    -fx-text-box-border: transparent;
-    -fx-effect: null;
-    /*-fx-background-color: -fx-control-inner-background;*/
-    -fx-background-insets: 0;
-    -fx-padding: 1 3 1 3;
-}
-
 .text-field:focused {
     -fx-focus-color: transparent;
-}
-
-#styledButton{
-
--fx-background-color: red;
--fx-text-fill: white;
 }
 
 #app-center-vbox{

@@ -76,7 +76,7 @@ public class VerseController implements Initializable {
 //            }
 
             HBox lyricRow = new HBox();
-            lyricRow.setStyle(styles);
+//            lyricRow.setStyle(styles);
             if(lyricLine.getLyricList() != null) {
                 List<Lyric> lyricList = lyricLine.getLyricList();
                 for (int i = 0; i < lyricList.size(); i++) {
@@ -148,7 +148,7 @@ public class VerseController implements Initializable {
 
         lyricColumn.getChildren().add(lyricText);
         lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
-        lyricColumn.setStyle(styles2);
+//        lyricColumn.setStyle(styles2);
 
         if(requestFocus){
             lyricText.requestFocus();
@@ -182,6 +182,10 @@ public class VerseController implements Initializable {
 //                    event.consume();
                     KeyCode keyCode = ((KeyEvent) event).getCode();
                     if(keyCode.equals(KeyCode.SPACE)){
+                        if(textField.getText().trim().isBlank()){
+                            return;
+                        }
+
                         Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
                         if(index != null){
                             HBox lyricRow = (HBox) FXMLHelper.data(textField, Lyric.PARENT);
