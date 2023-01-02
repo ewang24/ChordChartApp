@@ -13,11 +13,10 @@
 }
 
 .lyric-text{
-    /*-fx-background-color: red;
-    -fx-background: red;*/
+    -fx-background-color: red;
     -fx-text-box-border: transparent;
     -fx-effect: null;
-    -fx-background-color: -fx-control-inner-background;
+    /*-fx-background-color: -fx-control-inner-background;*/
     -fx-background-insets: 0;
     -fx-padding: 0 0 0 0;
 }

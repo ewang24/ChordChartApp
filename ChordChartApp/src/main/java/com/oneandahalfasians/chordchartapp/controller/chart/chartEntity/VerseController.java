@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -164,6 +166,16 @@ public class VerseController implements Initializable {
 //                    event.consume();
                     KeyCode keyCode = ((KeyEvent) event).getCode();
                     if(keyCode.equals(KeyCode.SPACE)){
+
+                        Bounds textBounds = textField.localToScene(textField.getBoundsInLocal());
+                        Bounds verseBounds = verseBox.localToScene(verseBox.getBoundsInLocal());
+                        verseBox.setPrefWrapLength(10);
+
+                        Region p = new Region();
+                        p.setPrefSize(verseBounds.getMaxX() - textBounds.getMaxX() - 5, 20);
+                        p.setStyle("-fx-background-color: blue;");
+                        verseBox.getChildren().add(p);
+
                         if(textField.getText() == null || textField.getText().trim().isBlank()){
                             return;
                         }
@@ -181,10 +193,10 @@ public class VerseController implements Initializable {
                             }
 
                             lyricColumn.getChildren().get(lyricColumn.getChildren().size() - 1).requestFocus();
-                            
+
                         }
-                        System.out.println("Space pressed");
-//                        textField.get
+//                        System.out.println("Space pressed");
+////                        textField.get
 
                     }
                 }
