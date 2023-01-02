@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="testing chart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/chart/chartEntity/VerseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/chart/chartEntity/VerseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/chart/chartEntity/verse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/chart/chartEntity/verse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="evan/dev/creatingNewElements" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

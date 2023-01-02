@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -30,7 +31,7 @@ public class VerseController implements Initializable {
     /*
         FXML Fields
      */
-    public VBox verseBox;
+    public FlowPane verseBox;
 
     @FXML
     private Text header;
@@ -61,42 +62,24 @@ public class VerseController implements Initializable {
                 "    -fx-border-width: 2;\n" +
                 "    -fx-border-style: dashed;";
 
-
+        int i = 0;
         for (LyricLine lyricLine : verse.getLines()) {
-//            HBox chordBox = new HBox(); hi
-//            chordBox.setStyle(styles);
-//            chordBox.setStyle("-fx-spacing: " + CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING);
-//            if (wrapper.getChordLine() != null) {
-//                for (Chord chord : wrapper.getChordLine().getChords()) {
-//
-//
-//
-//                    chordBox.getChildren().add(chordText);
-//                }
-//            }
-
-            HBox lyricRow = new HBox();
-//            lyricRow.setStyle(styles);
             if(lyricLine.getLyricList() != null) {
                 List<Lyric> lyricList = lyricLine.getLyricList();
-                for (int i = 0; i < lyricList.size(); i++) {
-                    Lyric lyric = lyricList.get(i);
-
-
-                    lyricRow.getChildren().add(generateLyricColumn(lyric, lyricRow, i));
+                for (Lyric lyric : lyricList) {
+                    verseBox.getChildren().add(generateLyricColumn(lyric, i));
+                    i++;
                 }
             }
-//            verseBox.getChildren().add(chordBox);
-            verseBox.getChildren().add(lyricRow);
         }
     }
 
 
-    private VBox generateLyricColumn(Lyric lyric, HBox lyricRow, int index){
-        return generateLyricColumn(lyric, lyricRow, index, false);
+    private VBox generateLyricColumn(Lyric lyric, int index){
+        return generateLyricColumn(lyric, index, false);
     }
 
-    private VBox generateLyricColumn(Lyric lyric, HBox lyricRow, int index, boolean requestFocus){
+    private VBox generateLyricColumn(Lyric lyric, int index, boolean requestFocus){
 
         TextField lyricText = new TextField(lyric.getLyric());
         setTextFieldWidthListener(lyricText);
@@ -110,7 +93,7 @@ public class VerseController implements Initializable {
         } else {
             lyricClass = CSS.LYRIC_TEXT_CLASS;
             FXMLHelper.data(lyricText, Lyric.LYRIC_INDEX, index);
-            FXMLHelper.data(lyricText, Lyric.PARENT, lyricRow);
+            FXMLHelper.data(lyricText, Lyric.PARENT, verseBox);
         }
 
         lyricText.getStyleClass().add(lyricClass);
@@ -187,11 +170,10 @@ public class VerseController implements Initializable {
 
                         Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
                         if(index != null){
-                            HBox lyricRow = (HBox) FXMLHelper.data(textField, Lyric.PARENT);
-                            ObservableList<Node> children = lyricRow.getChildren();
+                            ObservableList<Node> children = verseBox.getChildren();
 
                             int newIndex = index + 1;
-                            VBox lyricColumn = generateLyricColumn(new Lyric(null), lyricRow, newIndex, true);
+                            VBox lyricColumn = generateLyricColumn(new Lyric(null), newIndex, true);
                             children.add(newIndex, lyricColumn);
 
                             for (int i = 0; i < children.size(); i++) {
