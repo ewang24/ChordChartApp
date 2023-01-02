@@ -9,8 +9,13 @@ public class Lyric {
     private String lyric;
     private AnchorPoint anchorPoint;
 
+    public Lyric(LyricLine lyricLine){
+        this.lyricLine = lyricLine;
+    }
+
     public Lyric(String lyric, LyricLine lyricLine) {
         this.lyric = lyric;
+        this.lyricLine = lyricLine;
     }
 
     public String getLyric() {
