@@ -114,9 +114,7 @@ public class VerseController implements Initializable {
         }
 
         lyricText.getStyleClass().add(lyricClass);
-
-
-
+        lyricText.setAlignment(Pos.CENTER);
 
         setTextFieldKeyListeners(lyricText, true);
 
@@ -135,6 +133,7 @@ public class VerseController implements Initializable {
 //                        }
 //                    });
             chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
+            chordText.setAlignment(Pos.CENTER);
 
             setTextFieldWidthListener(chordText);
 
@@ -182,7 +181,7 @@ public class VerseController implements Initializable {
 //                    event.consume();
                     KeyCode keyCode = ((KeyEvent) event).getCode();
                     if(keyCode.equals(KeyCode.SPACE)){
-                        if(textField.getText().trim().isBlank()){
+                        if(textField.getText() == null || textField.getText().trim().isBlank()){
                             return;
                         }
 
