@@ -21,15 +21,6 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    public Button styledButton;
-
-    @FXML
-    public Text styledText;
-
-    @FXML
-    public Text fancytext;
-
-    @FXML
     public VBox appCenterVBox;
 
     @FXML
@@ -41,9 +32,6 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appCenterVBox.setId("app-center-vbox");
-//        styledButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
-//        styledText.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
-        fancytext.setId("fancytext");
 
         Chart chart = new Chart();
         chart.setTitle("Evan's First Song");
