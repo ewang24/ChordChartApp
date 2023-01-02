@@ -20,8 +20,7 @@
     -fx-effect: null;
     /*-fx-background-color: -fx-control-inner-background;*/
     -fx-background-insets: 0;
-    -fx-padding: 0 2 0 2;
-    -fx-margin: 10 10 10 10;
+    -fx-padding: 0 0 0 0;
 }
 
 .blank-lyric-text{

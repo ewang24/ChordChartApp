@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="testing chart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/chart/chartEntity/VerseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/chart/chartEntity/VerseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Accidental.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Accidental.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Extension.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Extension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/key/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/AnchorPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/AnchorPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/Chord.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/Chord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/ChordLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/data/entities/line/ChordLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/chart/chartEntity/verse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/chart/chartEntity/verse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -103,6 +100,17 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
