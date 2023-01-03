@@ -1,6 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.VerseController;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.fxml.FXMLLoader;
@@ -13,17 +14,17 @@ import java.util.List;
 
 public class Verse extends ChartEntity {
 
-    protected List<LyricLine> lines = new ArrayList<>();
+    protected List<LyricLine<Lyric>> lines = new ArrayList<>();
 
-    public List<LyricLine> getLines() {
+    public List<LyricLine<Lyric>> getLines() {
         return lines;
     }
 
-    public void setLines(List<LyricLine> lines) {
+    public void setLines(List<LyricLine<Lyric>> lines) {
         this.lines = lines;
     }
 
-    public void addLine(LyricLine lyricLine){
+    public void addLine(LyricLine<Lyric> lyricLine){
         getLines().add(lyricLine);
     }
 

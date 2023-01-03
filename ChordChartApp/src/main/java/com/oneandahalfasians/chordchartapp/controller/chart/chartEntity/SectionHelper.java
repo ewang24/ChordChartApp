@@ -23,7 +23,7 @@ import java.util.List;
 
 public class SectionHelper {
 
-    public static void initializeSectionContents(ChartEntity section, List<LyricLine<? extends Lyric>> lines, Text header, VBox contentBox) {
+    public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, VBox contentBox) {
         header.setText(section.getHeaderName());
         header.setFont(Font.font("arial", FontWeight.BOLD, 20));
         contentBox.setStyle(String.format("-fx-padding: 0 %s 0 %s", CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING, CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING));

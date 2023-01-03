@@ -11,24 +11,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Instrumental extends ChartEntity {
 
-    List<LyricLine<InstrumentalLyric>> chordLines;
+    List<LyricLine<Lyric>> chordLines = new ArrayList<>();
 
-    public List<LyricLine<InstrumentalLyric>> getChordLines() {
+    public List<LyricLine<Lyric>> getChordLines() {
         return chordLines;
     }
 
-    public void setChordLines(List<LyricLine<InstrumentalLyric>> chordLines) {
+    public void setChordLines(List<LyricLine<Lyric>> chordLines) {
         this.chordLines = chordLines;
     }
 
-    public void addLine(LyricLine<InstrumentalLyric> lyricLine){
-        LyricLine<InstrumentalLyric> instrumentalLine = new LyricLine<InstrumentalLyric>();
-        List<InstrumentalLyric> chords = lyricLine.getLyricList().stream().map(l -> {
+    public void addLine(LyricLine<Lyric> lyricLine){
+        LyricLine<Lyric> instrumentalLine = new LyricLine<Lyric>();
+        List<Lyric> chords = lyricLine.getLyricList().stream().map(l -> {
             InstrumentalLyric lyric = new InstrumentalLyric(instrumentalLine);
             lyric.setAnchorPoint(l.getAnchorPoint());
             return lyric;
