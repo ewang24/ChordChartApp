@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import java.io.IOException;
 import java.util.List;
 
-public class Instrumental extends ChartEntity {
+public class Instrumental extends Verse {
 
     List<LyricLine> chordLines;
 
@@ -24,14 +24,15 @@ public class Instrumental extends ChartEntity {
 
     @Override
     public Node render() {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(FXMLHelper.load("chart/chartEntity/instrumental.fxml"));
-            loader.setControllerFactory(a -> new InstrumentalController(this));
-            return loader.<Parent>load();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//
+//            FXMLLoader loader = new FXMLLoader(FXMLHelper.load("chart/chartEntity/instrumental.fxml"));
+//            loader.setControllerFactory(a -> new InstrumentalController(this));
+//            return loader.<Parent>load();
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        return super.render();
     }
 }

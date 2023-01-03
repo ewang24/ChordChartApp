@@ -1,8 +1,12 @@
 package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
 import com.oneandahalfasians.chordchartapp.data.entities.Instrumental;
+import javafx.fxml.Initializable;
 
-public class InstrumentalController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class InstrumentalController implements Initializable {
 
     private final Instrumental instrumental;
 
@@ -12,5 +16,10 @@ public class InstrumentalController {
 
     public Instrumental getInstrumental() {
         return instrumental;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

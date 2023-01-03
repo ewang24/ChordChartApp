@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<HBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.ChorusController"
-      prefHeight="400.0" prefWidth="600.0">
-    <Text>
-        Chorus
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.ChorusController">
+    <Text fx:id="header">
     </Text>
-</HBox>
+    <VBox fx:id="chorusBox">
+    </VBox>
+   <padding>
+      <Insets left="50.0" />
+   </padding>
+</VBox>

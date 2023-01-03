@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Chorus extends ChartEntity {
 
-    List<LyricLine> chordLines;
+    List<LyricLine> chordLines = new ArrayList<>();
 
     public List<LyricLine> getChordLines() {
         return chordLines;
@@ -23,6 +23,10 @@ public class Chorus extends ChartEntity {
 
     public void setChordLines(List<LyricLine> chordLines) {
         this.chordLines = chordLines;
+    }
+
+    public void addLine(LyricLine lyricLine){
+        getChordLines().add(lyricLine);
     }
 
     @Override

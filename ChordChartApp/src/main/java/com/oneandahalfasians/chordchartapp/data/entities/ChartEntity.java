@@ -4,7 +4,7 @@ import javafx.scene.Node;
 
 public abstract class ChartEntity {
 
-    private String headerName;
+    protected String headerName;
 
     public String getHeaderName() {
         return headerName;

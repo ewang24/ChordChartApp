@@ -69,7 +69,20 @@ public class MainController implements Initializable {
         verse.addLine(lyric2Line);
         verse.addLine(lyric3Line);
 
+        Chorus chorus = new Chorus();
+        chorus.setHeaderName("Chorus 1");
+        chorus.addLine(lyricLine);
+        chorus.addLine(lyric2Line);
+        chorus.addLine(lyric3Line);
+
+        Bridge bridge = new Bridge();
+        bridge.addLine(lyricLine);
+        bridge.addLine(lyric2Line);
+        bridge.addLine(lyric3Line);
+
         chart.getEntityList().add(verse);
+        chart.getEntityList().add(chorus);
+        chart.getEntityList().add(bridge);
 
         chartViewController.setChart(chart);
     }
