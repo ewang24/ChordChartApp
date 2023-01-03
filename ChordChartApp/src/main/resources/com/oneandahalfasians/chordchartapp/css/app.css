@@ -54,3 +54,7 @@
     -fx-border-width: 3;
     -fx-border-style: dashed;
 }
+
+.app-center-margin{
+    -fx-background-color: #d7dade
+}

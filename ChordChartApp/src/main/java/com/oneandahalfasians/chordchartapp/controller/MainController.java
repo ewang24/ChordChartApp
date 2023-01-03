@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    public VBox appCenterVBox;
+    public GridPane appCenterVBox;
 
     @FXML
     private Parent chartView;
@@ -32,6 +33,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appCenterVBox.setId("app-center-vbox");
+
 
         Chart chart = new Chart();
         chart.setTitle("Evan's First Song");

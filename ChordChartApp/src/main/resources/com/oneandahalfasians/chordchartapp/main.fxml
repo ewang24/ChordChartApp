@@ -1,70 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane
-        maxHeight="-Infinity"
-        maxWidth="-Infinity"
-        minHeight="-Infinity"
-        minWidth="-Infinity"
-        prefHeight="400.0"
-        prefWidth="600.0"
-        xmlns="http://javafx.com/javafx/19"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController"
->
-   <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <items>
-            <MenuBar prefHeight="25.0" prefWidth="386.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController">
+    <MenuBar maxHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="File">
+                <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <items>
                     <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <items>
                     <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </items>
-      </ToolBar>
-   </top>
-   <center>
-<!--       maxHeight="1.7976931348623157E308"-->
-<!--       maxWidth="1.7976931348623157E308"-->
-       <VBox
-
-             minHeight="-Infinity"
-             minWidth="-Infinity"
-             BorderPane.alignment="CENTER"
-             fx:id="appCenterVBox"
-       >
-           <fx:include fx:id="chartView" source="chart/chartListView.fxml" />
-       </VBox>
-   </center>
-   <bottom>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-          <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-        </items>
-      </ToolBar>
-   </bottom>
-</BorderPane>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+    <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <center>
+            <AnchorPane>
+                <GridPane fx:id="appCenterVBox" alignment="CENTER" gridLinesVisible="true" prefHeight="400.0" prefWidth="1500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30.0" />
+                        <ColumnConstraints percentWidth="40.0" />
+                        <ColumnConstraints percentWidth="30.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="0.0" percentHeight="100.0" />
+                    </rowConstraints>
+                    <children>
+                        <Region styleClass="app-center-margin" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Pane GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <fx:include fx:id="chartView" source="chart/chartListView.fxml" />
+                        </Pane>
+                        <Region styleClass="app-center-margin" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    </children>
+                </GridPane>
+            </AnchorPane>
+        </center>
+    </BorderPane>
+</AnchorPane>
