@@ -2,6 +2,7 @@ package com.oneandahalfasians.chordchartapp.data.entities;
 
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController;
 import com.oneandahalfasians.chordchartapp.data.entities.line.AnchorPoint;
+import com.oneandahalfasians.chordchartapp.data.entities.line.InstrumentalLyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
@@ -13,29 +14,28 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Instrumental extends Verse {
+public class Instrumental extends ChartEntity {
 
-    List<LyricLine> chordLines;
+    List<LyricLine<InstrumentalLyric>> chordLines;
 
-    public List<LyricLine> getChordLines() {
+    public List<LyricLine<InstrumentalLyric>> getChordLines() {
         return chordLines;
     }
 
-    public void setChordLines(List<LyricLine> chordLines) {
+    public void setChordLines(List<LyricLine<InstrumentalLyric>> chordLines) {
         this.chordLines = chordLines;
     }
 
-    @Override
-    public void addLine(LyricLine lyricLine){
-        LyricLine instrumentalLine = new LyricLine();
-        List<Lyric> chords = lyricLine.getLyricList().stream().map(l -> {
-            Lyric lyric = new Lyric(instrumentalLine);
+    public void addLine(LyricLine<InstrumentalLyric> lyricLine){
+        LyricLine<InstrumentalLyric> instrumentalLine = new LyricLine<InstrumentalLyric>();
+        List<InstrumentalLyric> chords = lyricLine.getLyricList().stream().map(l -> {
+            InstrumentalLyric lyric = new InstrumentalLyric(instrumentalLine);
             lyric.setAnchorPoint(l.getAnchorPoint());
             return lyric;
         }).collect(Collectors.toList());
 
         instrumentalLine.setLyricList(chords);
-        getLines().add(instrumentalLine);
+        getChordLines().add(instrumentalLine);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.oneandahalfasians.chordchartapp.data.entities;
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.ChorusController;
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController;
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.fxml.FXMLLoader;
@@ -15,13 +16,13 @@ import java.util.List;
 
 public class Chorus extends ChartEntity {
 
-    List<LyricLine> chordLines = new ArrayList<>();
+    List<LyricLine<Lyric>> chordLines = new ArrayList<LyricLine<Lyric>>();
 
-    public List<LyricLine> getChordLines() {
+    public List<LyricLine<Lyric>> getChordLines() {
         return chordLines;
     }
 
-    public void setChordLines(List<LyricLine> chordLines) {
+    public void setChordLines(List<LyricLine<Lyric>> chordLines) {
         this.chordLines = chordLines;
     }
 

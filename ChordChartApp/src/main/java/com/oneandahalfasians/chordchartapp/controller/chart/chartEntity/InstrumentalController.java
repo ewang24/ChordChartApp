@@ -56,12 +56,12 @@ public class InstrumentalController implements Initializable {
                 "    -fx-border-style: dashed;";
 
 
-        for (LyricLine lyricLine : instrumental.getLines()) {
+        for (LyricLine<InstrumentalLyric> lyricLine : instrumental.getChordLines()) {
 
             HBox lyricRow = new HBox();
 //            lyricRow.setStyle(styles);
             if(lyricLine.getLyricList() != null) {
-                List<Lyric> lyricList = lyricLine.getLyricList();
+                List<InstrumentalLyric> lyricList = lyricLine.getLyricList();
                 for (int i = 0; i < lyricList.size(); i++) {
                     Lyric lyric = lyricList.get(i);
 

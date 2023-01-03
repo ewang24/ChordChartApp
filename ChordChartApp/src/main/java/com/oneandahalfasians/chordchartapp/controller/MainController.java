@@ -82,14 +82,14 @@ public class MainController implements Initializable {
 
         Instrumental instrumental = new Instrumental();
         instrumental.setHeaderName("Instrumental 1");
-        instrumental.addLine(lyricLine);
-        instrumental.addLine(lyric2Line);
-        instrumental.addLine(lyric3Line);
+//        instrumental.addLine(lyricLine);
+//        instrumental.addLine(lyric2Line);
+//        instrumental.addLine(lyric3Line);
 
         chart.getEntityList().add(verse);
         chart.getEntityList().add(chorus);
         chart.getEntityList().add(bridge);
-        chart.getEntityList().add(instrumental);
+//        chart.getEntityList().add(instrumental);
 
         chartViewController.setChart(chart);
     }
