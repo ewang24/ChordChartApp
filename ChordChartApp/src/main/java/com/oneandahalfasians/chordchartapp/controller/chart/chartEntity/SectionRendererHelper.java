@@ -23,31 +23,43 @@ import java.util.List;
 
 public class SectionRendererHelper {
 
+    /**
+     * Helper method to setup the view for sections (instrumentals, verses, choruses, etc.)
+     * @param section The given section. This will be a child of ChartEntity, like instrumental, verse, etc.
+     * @param lines The list of content for the given section
+     * @param header The header element for this view
+     * @param contentBox The main content box for this view
+     */
     public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, VBox contentBox) {
+
+       //Set basic universal section info
         header.setText(section.getHeaderName());
         header.setFont(Font.font("arial", FontWeight.BOLD, 20));
         contentBox.setStyle(String.format("-fx-padding: 0 %s 0 %s", CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING, CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING));
 
-
+        //These are testing styles
         String styles = "-fx-border-color: blue;\n" +
                 "    -fx-border-insets: 5;\n" +
                 "    -fx-border-width: 2;\n" +
                 "    -fx-border-style: dashed;";
 
 
+        //Loop over the rows of contents of the sections
         for (LyricLine<? extends Lyric> lyricLine : lines) {
 
+            //lyricRow represents a visual line of content for a section
             HBox lyricRow = new HBox();
-//            lyricRow.setStyle(styles);
             if (lyricLine.getLyricList() != null) {
-                List<? extends Lyric> lyricList = lyricLine.getLyricList();
-                for (int i = 0; i < lyricList.size(); i++) {
-                    Lyric lyric = lyricList.get(i);
 
-                    lyricRow.getChildren().add(generateLyricColumn(lyric, lyricRow, i));
+                //process the contents of a row
+                List<? extends Lyric> lyricList = lyricLine.getLyricList();
+                for (int childIndex = 0; childIndex < lyricList.size(); childIndex++) {
+                    Lyric lyric = lyricList.get(childIndex);
+                    lyricRow.getChildren().add(generateLyricColumn(lyric, lyricRow, childIndex));
                 }
             }
-//            verseBox.getChildren().add(chordBox);
+
+            //Finally add our new row to the main container for the section
             contentBox.getChildren().add(lyricRow);
         }
     }
@@ -66,6 +78,7 @@ public class SectionRendererHelper {
         lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
 
 
+        //These are testing styles:
         String styles2 = "-fx-border-color: pink;\n" +
                 "    -fx-border-insets: 5;\n" +
                 "    -fx-border-width: 1;\n" +
@@ -93,15 +106,6 @@ public class SectionRendererHelper {
             Chord anchoredChord = lyric.getAnchorPoint().getChord();
 
             TextField chordText = new TextField(anchoredChord.toString());
-//                    chordText.textProperty().addListener(new ChangeListener<String>() {
-//                        @Override
-//                        public void changed(ObservableValue<? extends String> ob, String o,
-//                                            String n) {
-//                            // expand the textfield
-//                            chordText.setPrefWidth(TextUtils.computeTextWidth(field.getFont(),
-//                                    field.getText(), 0.0D) + 10);
-//                        }
-//                    });
             chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
             chordText.setAlignment(Pos.CENTER);
 
@@ -120,6 +124,7 @@ public class SectionRendererHelper {
         TextField lyricText = new TextField(lyric.getLyric());
         setTextFieldWidthListener(lyricText);
 
+        //Determine the styling for the type of lyric
         String lyricClass = null;
         if (lyric instanceof Blank) {
             lyricClass = CSS.BLANK_LYRIC_TEXT_CLASS;
@@ -157,6 +162,7 @@ public class SectionRendererHelper {
     }
 
     private static void setTextFieldKeyListeners(final TextField textField, boolean isLyric) {
+        //Handle key events for the text field
         if (isLyric) {
             textField.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<InputEvent>() {
                 @Override
@@ -166,13 +172,17 @@ public class SectionRendererHelper {
                         return;
                     }
 
-//                    event.consume();
                     KeyCode keyCode = ((KeyEvent) event).getCode();
+
+                    //Proces space key events
                     if (keyCode.equals(KeyCode.SPACE)) {
+
+                        //If the text has no contents, then there is nothing to do
                         if (textField.getText() == null || textField.getText().trim().isBlank()) {
                             return;
                         }
 
+                        //Otherwise, we will want to add a new text field
                         Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
                         if (index != null) {
                             HBox lyricRow = (HBox) FXMLHelper.data(textField, Lyric.PARENT);
@@ -189,15 +199,10 @@ public class SectionRendererHelper {
                             lyricColumn.getChildren().get(lyricColumn.getChildren().size() - 1).requestFocus();
 
                         }
-                        System.out.println("Space pressed");
-//                        textField.get
 
                     }
                 }
             });
-//            textField.textProperty().addListener((observable, oldValue, newValue) -> {
-//                System.out.println(oldValue + " " + newValue);
-//            });
         } else {
             textField.textProperty().addListener((observable, oldValue, newValue) -> {
                 System.out.println(oldValue + " " + newValue);
