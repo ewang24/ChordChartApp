@@ -30,6 +30,7 @@ public class VerseController implements Initializable {
     /*
         FXML Fields
      */
+    @FXML
     public VBox verseBox;
 
     @FXML
@@ -199,7 +200,7 @@ public class VerseController implements Initializable {
                             }
 
                             lyricColumn.getChildren().get(lyricColumn.getChildren().size() - 1).requestFocus();
-                            
+
                         }
                         System.out.println("Space pressed");
 //                        textField.get
