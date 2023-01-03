@@ -36,6 +36,6 @@ public class VerseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SectionHelper.initializeSectionContents(verse, verse.getLines(), header, verseBox);
+        SectionRendererHelper.initializeSectionContents(verse, verse.getLines(), header, verseBox);
     }
 }

@@ -29,7 +29,7 @@ public class InstrumentalController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SectionHelper.initializeSectionContents(instrumental, instrumental.getChordLines(), header, instrumentalBox);
+        SectionRendererHelper.initializeSectionContents(instrumental, instrumental.getChordLines(), header, instrumentalBox);
     }
 
 }

@@ -27,7 +27,7 @@ public class ChorusController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SectionHelper.initializeSectionContents(chorus, chorus.getChordLines(), header, chorusBox);
+        SectionRendererHelper.initializeSectionContents(chorus, chorus.getChordLines(), header, chorusBox);
     }
 
 }

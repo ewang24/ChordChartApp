@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 
 import java.util.List;
 
-public class SectionHelper {
+public class SectionRendererHelper {
 
     public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, VBox contentBox) {
         header.setText(section.getHeaderName());
