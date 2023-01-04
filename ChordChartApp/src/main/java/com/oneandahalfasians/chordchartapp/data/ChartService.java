@@ -1,5 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data;
 
+import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+
 public class ChartService implements IChartService{
 
 
@@ -34,7 +36,7 @@ public class ChartService implements IChartService{
     }
 
     @Override
-    public void addLyric() {
+    public void addLyric(ChartEntity parent, String lyricText, int index) {
 
     }
 

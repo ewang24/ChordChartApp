@@ -1,5 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data;
 
+import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+
 public interface IChartService {
 
     void addIntro();
@@ -14,7 +16,7 @@ public interface IChartService {
 
     void addBridge();
 
-    void addLyric();
+    void addLyric(ChartEntity parent, String lyricText, int index);
     void anchorChord();
 
     void addBreak();
