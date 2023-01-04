@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -18,7 +19,8 @@ public class ChordChartApplication extends Application {
         scene.getStylesheets().add(FXMLHelper.loadCSS("css/app.css"));
         stage.setTitle("Chord Chart App");
         stage.setScene(scene);
-        stage.setMaximized(true);
+        stage.setMaximized(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
