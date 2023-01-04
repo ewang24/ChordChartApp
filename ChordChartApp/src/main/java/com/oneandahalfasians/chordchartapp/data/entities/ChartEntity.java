@@ -15,7 +15,7 @@ public abstract class ChartEntity {
         return this;
     }
 
-    public abstract void addLyric(String lyric, int index);
+//    public abstract void addLyric(String lyric, int index);
 
     public abstract Node render();
 }
