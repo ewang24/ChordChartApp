@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="Added flowpane and broke everything else">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/ChordChartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/ChordChartApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/main.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="Added flowpane and broke everything else" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,10 +21,15 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="evan/dev/creatingNewElements" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19/javafx-base-19-sources.jar!/javafx/beans/property/IntegerProperty.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19/javafx-controls-19-sources.jar!/javafx/scene/control/TextField.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19/javafx-graphics-19-sources.jar!/javafx/scene/Node.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,14 +49,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/CS/ChordChartApp",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CS/ChordChartApp&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.oneandahalfasians.chordchartapp.data.entities.line" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ChordChartApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.oneandahalfasians.chordchartapp.ChordChartApplication" />
@@ -100,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671332345111</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added flowpane and broke everything else">
+      <created>1672630783799</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672630783799</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -128,7 +140,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Testing IntelliJ git commit" />
     <MESSAGE value="testing chart" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing chart" />
+    <MESSAGE value="Added flowpane and broke everything else" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added flowpane and broke everything else" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

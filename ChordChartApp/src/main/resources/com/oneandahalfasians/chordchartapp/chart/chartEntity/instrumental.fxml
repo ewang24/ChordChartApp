@@ -7,11 +7,12 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
-<HBox xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController"
       prefHeight="400.0" prefWidth="600.0">
-    <Text>
-        Instrumental
+    <Text fx:id="header">
     </Text>
-</HBox>
+    <VBox fx:id="instrumentalBox">
+    </VBox>
+</VBox>
