@@ -20,7 +20,7 @@ public class ChordChartApplication extends Application {
         stage.setTitle("Chord Chart App");
         stage.setScene(scene);
         stage.setMaximized(false);
-        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 
