@@ -84,7 +84,7 @@
 
 .split-menu-button:focused {
     -fx-background-color: #6B60BD;
-    -fx-background-insets: -0.2;
+    -fx-background-insets: 0;
     -fx-background-radius: 3;
 }
 
@@ -98,4 +98,8 @@
     -fx-background-color: #6B60BD;
     -fx-background-insets: 1, 2, -1.4, 2.6;
     -fx-background-radius: 0 2 2 0, 0 1 1 0, 0 4 4 0, 0;
+}
+
+.split-menu-button .menu-item > .label {
+    -fx-text-fill: #000000;
 }

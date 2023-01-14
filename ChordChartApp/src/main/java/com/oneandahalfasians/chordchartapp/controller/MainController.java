@@ -5,10 +5,12 @@ import com.oneandahalfasians.chordchartapp.data.Chart;
 import com.oneandahalfasians.chordchartapp.data.entities.*;
 import com.oneandahalfasians.chordchartapp.data.entities.key.*;
 import com.oneandahalfasians.chordchartapp.data.entities.line.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -112,5 +114,40 @@ public class MainController implements Initializable {
             lyricList.add(blank);
         }
         return lyricList;
+    }
+
+    @FXML public void addVerse(ActionEvent e){
+        System.out.println("verse added");
+        //TODO add verse object to chart
+    }
+
+    @FXML public void addChorus(ActionEvent e){
+        System.out.println("chorus added");
+        //TODO add chorus object to chart
+
+    }
+
+    @FXML public void addBridge(ActionEvent e){
+        System.out.println("bridge added");
+        //TODO add bridge object to chart
+
+    }
+
+    @FXML public void addInstrumental(ActionEvent e){
+        System.out.println("instrumental added");
+        //TODO add instrumental object to chart
+
+    }
+
+    @FXML public void addIntro(ActionEvent e){
+        System.out.println("intro added");
+        //TODO add intro object to chart
+
+    }
+
+    @FXML public void addOutro(ActionEvent e){
+        System.out.println("outro added");
+        //TODO add outro object to chart
+
     }
 }

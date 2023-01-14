@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="Added flowpane and broke everything else" />
+    <list default="true" id="78852cfa-55a4-470e-b2e9-8eb079dd8681" name="Changes" comment="Started styling buttons">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/ChordChartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/ChordChartApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/chart/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/java/com/oneandahalfasians/chordchartapp/controller/chart/ChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ChordChartApp/src/main/resources/com/oneandahalfasians/chordchartapp/main.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
