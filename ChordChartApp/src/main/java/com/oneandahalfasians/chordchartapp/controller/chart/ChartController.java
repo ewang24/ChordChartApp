@@ -70,18 +70,19 @@ public class ChartController implements Initializable {
         //Create a row for each of the chart entities (verses, choruses, bridge, etc.)
         try {
             for (ChartEntity chartEntity : chartEntityList) {
-                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartEntityRow.fxml"));
-                fxmlLoader.setControllerFactory(a -> new ChartEntityRowController(chartEntity));
-                
-                Parent row = fxmlLoader.load();
-
-                container.getChildren().add(row);
-
+                addChild(chartEntity);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         return this;
+    }
+
+    public void addChild(ChartEntity newEntity) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartEntityRow.fxml"));
+        fxmlLoader.setControllerFactory(a -> new ChartEntityRowController(newEntity));
+        Parent row = fxmlLoader.load();
+        container.getChildren().add(row);
     }
 }

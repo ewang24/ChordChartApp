@@ -26,7 +26,7 @@
 @REM Optional ENV vars
 @REM M2_HOME - location of maven2's installed home dir
 @REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
-@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending
+@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before outro
 @REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
 @REM     e.g. to debug Maven itself, use
 @REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
@@ -45,7 +45,7 @@ if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
 
 @REM Execute a user defined script before this one
 if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
-@REM check for pre script, once with legacy .bat ending and once with .cmd ending
+@REM check for pre script, once with legacy .bat outro and once with .cmd outro
 if exist "%USERPROFILE%\mavenrc_pre.bat" call "%USERPROFILE%\mavenrc_pre.bat" %*
 if exist "%USERPROFILE%\mavenrc_pre.cmd" call "%USERPROFILE%\mavenrc_pre.cmd" %*
 :skipRcPre
@@ -175,7 +175,7 @@ set ERROR_CODE=1
 @endlocal & set ERROR_CODE=%ERROR_CODE%
 
 if not "%MAVEN_SKIP_RC%"=="" goto skipRcPost
-@REM check for post script, once with legacy .bat ending and once with .cmd ending
+@REM check for post script, once with legacy .bat outro and once with .cmd outro
 if exist "%USERPROFILE%\mavenrc_post.bat" call "%USERPROFILE%\mavenrc_post.bat"
 if exist "%USERPROFILE%\mavenrc_post.cmd" call "%USERPROFILE%\mavenrc_post.cmd"
 :skipRcPost

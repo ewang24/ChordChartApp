@@ -1,6 +1,6 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
-public class Ending extends Instrumental{
+public class Outro extends Instrumental{
 
 
 

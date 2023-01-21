@@ -9,12 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +41,7 @@ public class MainController implements Initializable {
         chart.setUnitBeat(8);
         chart.setTempo(42069);
         chart.setIntro(new Intro());
-        chart.setEnding(new Ending());
+        chart.setEnding(new Outro());
 
         //Make a few lines of lyrics:
         List<Chord> chordList = (Arrays.asList(new Chord(new Key(KeyLetter.E, Accidental.SHARP), Quality.MAJOR),
@@ -116,38 +113,69 @@ public class MainController implements Initializable {
         return lyricList;
     }
 
-    @FXML public void addVerse(ActionEvent e){
+    @FXML
+    public void addVerse(ActionEvent e){
         System.out.println("verse added");
-        //TODO add verse object to chart
+        var newVerse = new Verse();
+        try {
+            chartViewController.addChild(newVerse);
+        } catch (IOException ex) {
+            System.out.println("You dun goofed.");
+        }
     }
 
-    @FXML public void addChorus(ActionEvent e){
+    @FXML
+    public void addChorus(ActionEvent e){
         System.out.println("chorus added");
-        //TODO add chorus object to chart
-
+        var newChorus = new Chorus();
+        try {
+            chartViewController.addChild(newChorus);
+        } catch (IOException ex) {
+            System.out.println("You dun goofed.");
+        }
     }
 
-    @FXML public void addBridge(ActionEvent e){
+    @FXML
+    public void addBridge(ActionEvent e){
         System.out.println("bridge added");
-        //TODO add bridge object to chart
-
+        var newBridge = new Bridge();
+        try {
+            chartViewController.addChild(newBridge);
+        } catch (IOException ex) {
+            System.out.println("You dun goofed.");
+        }
     }
 
-    @FXML public void addInstrumental(ActionEvent e){
+    @FXML
+    public void addInstrumental(ActionEvent e){
         System.out.println("instrumental added");
-        //TODO add instrumental object to chart
-
+        var newInstrumental = new Instrumental();
+        try {
+            chartViewController.addChild(newInstrumental);
+        } catch (IOException ex) {
+            System.out.println("You dun goofed.");
+        }
     }
 
-    @FXML public void addIntro(ActionEvent e){
+    @FXML
+    public void addIntro(ActionEvent e){
         System.out.println("intro added");
-        //TODO add intro object to chart
-
+        var newIntro = new Intro();
+        try {
+            chartViewController.addChild(newIntro);
+        } catch (IOException ex) {
+            System.out.println("You dun goofed.");
+        }
     }
 
-    @FXML public void addOutro(ActionEvent e){
+    @FXML
+    public void addOutro(ActionEvent e){
         System.out.println("outro added");
-        //TODO add outro object to chart
-
+        var newOutro = new Outro();
+        try {
+            chartViewController.addChild(newOutro);
+        } catch (IOException ex) {
+            System.out.println("You dun goofed.");
+        }
     }
 }

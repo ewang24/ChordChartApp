@@ -1,7 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
-import com.oneandahalfasians.chordchartapp.data.entities.Ending;
+import com.oneandahalfasians.chordchartapp.data.entities.Outro;
 import com.oneandahalfasians.chordchartapp.data.entities.Intro;
 import com.oneandahalfasians.chordchartapp.data.entities.key.Key;
 
@@ -19,7 +19,7 @@ public class Chart {
     private int tempo;
 
     private Intro intro;
-    private Ending ending;
+    private Outro outro;
 
     List<ChartEntity> entityList = new ArrayList<>();
 
@@ -77,12 +77,12 @@ public class Chart {
         return this;
     }
 
-    public Ending getEnding() {
-        return ending;
+    public Outro getEnding() {
+        return outro;
     }
 
-    public Chart setEnding(Ending ending) {
-        this.ending = ending;
+    public Chart setEnding(Outro outro) {
+        this.outro = outro;
         return this;
     }
 
