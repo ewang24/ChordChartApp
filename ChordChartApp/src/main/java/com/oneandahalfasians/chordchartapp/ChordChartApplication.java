@@ -6,11 +6,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class ChordChartApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ChordChartApplication.class.getResource("main.fxml"));
@@ -20,7 +23,6 @@ public class ChordChartApplication extends Application {
         stage.setTitle("Chord Chart App");
         stage.setScene(scene);
         stage.setMaximized(false);
-//        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

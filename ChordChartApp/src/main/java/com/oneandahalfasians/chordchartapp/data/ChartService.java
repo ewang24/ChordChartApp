@@ -2,6 +2,7 @@ package com.oneandahalfasians.chordchartapp.data;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 
+
 public class ChartService implements IChartService{
 
 
