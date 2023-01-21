@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+@Component
 public class MainController implements Initializable {
 
     @FXML

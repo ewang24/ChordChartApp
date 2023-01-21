@@ -1,9 +1,15 @@
 package com.oneandahalfasians.chordchartapp.data;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ChartService implements IChartService{
 
+
+    public void test(){
+        System.out.println("test from the BEAN");
+    }
 
     @Override
     public void addIntro() {

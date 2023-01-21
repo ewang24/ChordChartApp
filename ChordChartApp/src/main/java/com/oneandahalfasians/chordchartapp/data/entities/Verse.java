@@ -7,11 +7,13 @@ import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Verse extends ChartEntity {
 
     protected List<LyricLine<Lyric>> lines = new ArrayList<>();
