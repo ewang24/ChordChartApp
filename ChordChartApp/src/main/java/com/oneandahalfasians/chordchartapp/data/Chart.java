@@ -11,6 +11,12 @@ import java.util.stream.Collectors;
 
 public class Chart {
 
+    //calculated data fields
+    int maxVerse;
+    int maxChorus;
+    int maxInstrumental;
+
+    //Data fields
     private String title;
     private List<Key> keyList = new ArrayList<>();
     private int numberOfBeats;
@@ -21,7 +27,36 @@ public class Chart {
     private Intro intro;
     private Outro outro;
 
+    //This is all of the possible chart elements (verses, choruses, etc)
     List<ChartEntity> entityList = new ArrayList<>();
+
+
+    public int getMaxVerse() {
+        return maxVerse;
+    }
+
+    public Chart incrementMaxVerse(){
+        maxVerse++;
+        return this;
+    }
+
+    public int getMaxChorus() {
+        return maxChorus;
+    }
+
+    public Chart incrementMaxChorus(){
+        maxChorus++;
+        return this;
+    }
+
+    public int getMaxInstrumental() {
+        return maxInstrumental;
+    }
+
+    public Chart incrementMaxInstrumental(){
+        maxInstrumental++;
+        return this;
+    }
 
     public String getTitle() {
         return title;
