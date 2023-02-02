@@ -139,11 +139,21 @@ public class ChartService{
     }
 
     public Chorus addChorus() {
-        return null;
+        Chorus chorus = new Chorus();
+        chart.incrementMaxChorus();
+        chorus.setHeaderName("Chorus #" + chart.getMaxChorus());
+
+        chart.getEntityList().add(chorus);
+        return chorus;
     }
 
     public Instrumental addInstrumental() {
-        return null;
+        Instrumental instrumental = new Instrumental();
+        chart.incrementMaxInstrumental();
+        instrumental.setHeaderName("Instrumental #" + chart.getMaxInstrumental());
+
+        chart.getEntityList().add(instrumental);
+        return instrumental;
     }
 
     public Bridge addBridge() {
