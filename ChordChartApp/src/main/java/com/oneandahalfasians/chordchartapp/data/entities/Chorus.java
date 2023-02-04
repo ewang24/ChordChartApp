@@ -1,6 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.ChorusController;
+import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.EntityController;
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController;
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chorus extends ChartEntity {
+
+    public static final String MAIN_CONTAINER_ID = "chorusBox";
 
     List<LyricLine<Lyric>> chordLines = new ArrayList<LyricLine<Lyric>>();
 
@@ -31,15 +34,30 @@ public class Chorus extends ChartEntity {
     }
 
     @Override
-    public Node render() {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(FXMLHelper.load("chart/chartEntity/chorus.fxml"));
-            loader.setControllerFactory(a -> new ChorusController(this));
-            return loader.<Parent>load();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Class<? extends EntityController> getViewClass() {
+        return ChorusController.class;
     }
+
+    //    @Override
+//    public Node render(ChartEntit) {
+//        try {
+//
+//            FXMLLoader loader = new FXMLLoader(FXMLHelper.load("chart/chartEntity/chorus.fxml"));
+//            loader.setControllerFactory(a -> new ChorusController(this));
+//            return loader.<Parent>load();
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public void addEmptyChild() {
+//
+//    }
+//
+//    @Override
+//    public String getMainContainerId() {
+//        return MAIN_CONTAINER_ID;
+//    }
 }

@@ -93,7 +93,7 @@ public class SectionRendererHelper {
         //second, create the lyric. Instrumentals do not have lyrics,
         //so make sure that we are not dealing with an InstrumentalLyric.
         if(!(lyric instanceof InstrumentalLyric)){
-            generateLyricText(lyric, index,lyricRow, lyricColumn, requestFocus);
+            generateLyricText(lyric, index, lyricRow, lyricColumn, requestFocus);
         }
 
 
@@ -174,7 +174,7 @@ public class SectionRendererHelper {
 
                     KeyCode keyCode = ((KeyEvent) event).getCode();
 
-                    //Proces space key events
+                    //Process space key events
                     if (keyCode.equals(KeyCode.SPACE)) {
 
                         //If the text has no contents, then there is nothing to do

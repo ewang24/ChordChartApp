@@ -7,9 +7,10 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
+<!--        fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.VerseController"-->
 <VBox   xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.VerseController"
+
       prefHeight="400.0" prefWidth="600.0">
     <Text fx:id="header">
     </Text>

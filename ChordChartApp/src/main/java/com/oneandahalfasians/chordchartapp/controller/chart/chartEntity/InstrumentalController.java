@@ -1,5 +1,6 @@
 package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
+import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.Instrumental;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +10,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InstrumentalController implements Initializable {
+public class InstrumentalController extends EntityController implements Initializable {
 
     private final Instrumental instrumental;
 
@@ -19,8 +20,8 @@ public class InstrumentalController implements Initializable {
     @FXML
     public VBox instrumentalBox;
 
-    public InstrumentalController(Instrumental instrumental) {
-        this.instrumental = instrumental;
+    public InstrumentalController(ChartEntity instrumental) {
+        this.instrumental = (Instrumental) instrumental;
     }
 
     public Instrumental getInstrumental() {
@@ -32,4 +33,8 @@ public class InstrumentalController implements Initializable {
         SectionRendererHelper.initializeSectionContents(instrumental, instrumental.getChordLines(), header, instrumentalBox);
     }
 
+    @Override
+    public String getFxmlFileName() {
+        return "chart/chartEntity/instrumental.fxml";
+    }
 }
