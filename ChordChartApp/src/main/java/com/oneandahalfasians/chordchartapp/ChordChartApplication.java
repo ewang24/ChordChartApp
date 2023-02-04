@@ -14,6 +14,7 @@ import java.io.IOException;
 public class ChordChartApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         ChartService chartService = ChartService.getInstance();
         chartService.generateChart_TEST();
 

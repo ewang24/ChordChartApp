@@ -10,8 +10,6 @@ import java.util.List;
 
 public class ChartService{
 
-
-
     private Chart chart;
 
     private static ChartService chartServiceInstance;
@@ -121,12 +119,18 @@ public class ChartService{
         return chart;
     }
 
-    public void addIntro() {
-        
+    public Intro addIntro() {
+        Intro intro = new Intro();
+        intro.setHeaderName("Intro");
+        chart.getEntityList().add(intro);
+        return intro;
     }
 
-    public void addOutro() {
-
+    public Outro addOutro() {
+        Outro outro = new Outro();
+        outro.setHeaderName("Outro");
+        chart.getEntityList().add(outro);
+        return outro;
     }
 
     public Verse addVerse() {

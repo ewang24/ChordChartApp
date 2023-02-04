@@ -38,67 +38,62 @@ public class MainController implements Initializable {
 
 
     @FXML
-    public void addVerse(ActionEvent e){;
+    public void addVerse(ActionEvent e){
         try {
             var verse = ChartService.getInstance().addVerse();
             chartViewController.addChild(verse);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.");
+            System.out.println("You dun goofed:\n" + e);
         }
     }
 
     @FXML
     public void addChorus(ActionEvent e){
-        System.out.println("chorus added");
-        var newChorus = new Chorus();
         try {
+            var newChorus = ChartService.getInstance().addChorus();
             chartViewController.addChild(newChorus);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.");
+            System.out.println("You dun goofed.\n" + e);
         }
     }
 
     @FXML
     public void addBridge(ActionEvent e){
-        System.out.println("bridge added");
-        var newBridge = new Bridge();
         try {
+            var newBridge = ChartService.getInstance().addBridge();
             chartViewController.addChild(newBridge);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.");
+            System.out.println("You dun goofed.\n" + e);
         }
     }
 
     @FXML
     public void addInstrumental(ActionEvent e){
-        System.out.println("instrumental added");
-        var newInstrumental = new Instrumental();
         try {
+            var newInstrumental = ChartService.getInstance().addInstrumental();
             chartViewController.addChild(newInstrumental);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.");
+            System.out.println("You dun goofed.\n" + e);
         }
     }
 
     @FXML
     public void addIntro(ActionEvent e){
-        System.out.println("intro added");
-        var newIntro = new Intro();
         try {
+            var newIntro = ChartService.getInstance().addIntro();
             chartViewController.addChild(newIntro);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.");
+            System.out.println("You dun goofed.\n" + e);
         }
     }
 
     @FXML
     public void addOutro(ActionEvent e){
-        System.out.println("outro added");
-        var newOutro = new Outro();
         try {
+            var newOutro = ChartService.getInstance().addOutro();
             chartViewController.addChild(newOutro);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.");
+            System.out.println("You dun goofed.\n" + e);
         }
     }
 }
