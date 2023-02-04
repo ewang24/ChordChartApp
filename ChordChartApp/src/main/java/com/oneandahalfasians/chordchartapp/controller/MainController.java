@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-
+//randum teszt komint
     @FXML
     public GridPane appCenterVBox;
 
