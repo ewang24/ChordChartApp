@@ -2,6 +2,7 @@ package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.Instrumental;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -20,7 +21,7 @@ public class InstrumentalController extends EntityController implements Initiali
     @FXML
     public VBox instrumentalBox;
 
-    public InstrumentalController(ChartEntity instrumental) {
+    public InstrumentalController(ChartEntity instrumental, ChartEntityOptionsModel options) {
         this.instrumental = (Instrumental) instrumental;
     }
 

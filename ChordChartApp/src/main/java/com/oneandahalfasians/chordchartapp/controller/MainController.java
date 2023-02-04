@@ -43,7 +43,8 @@ public class MainController implements Initializable {
             var verse = ChartService.getInstance().addVerse();
             chartViewController.addChild(verse, true, true);
         } catch (IOException ex) {
-            System.out.println("You dun goofed:\n" + e);
+            System.out.println("You dun goofed:\n" + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 

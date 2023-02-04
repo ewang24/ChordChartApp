@@ -3,6 +3,7 @@ package com.oneandahalfasians.chordchartapp.controller.chart;
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.EntityController;
 import com.oneandahalfasians.chordchartapp.data.Chart;
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -88,7 +89,13 @@ public class ChartController implements Initializable {
     public void addChild(ChartEntity newEntity, boolean shouldFocus, boolean shouldAddNewEmptyElement) throws IOException {
 
         try {
-            EntityController controller = newEntity.getViewClass().getDeclaredConstructor(ChartEntity.class).newInstance(newEntity);
+            EntityController controller =
+                    newEntity.getViewClass()
+                            .getDeclaredConstructor(ChartEntity.class, ChartEntityOptionsModel.class)
+                            .newInstance(
+                                    newEntity,
+                                    new ChartEntityOptionsModel(shouldFocus, shouldAddNewEmptyElement)
+                            );
 
             FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load(controller.getFxmlFileName()));
             fxmlLoader.setController(controller);

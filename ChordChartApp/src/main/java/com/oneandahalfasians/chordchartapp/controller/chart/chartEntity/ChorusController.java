@@ -2,6 +2,7 @@ package com.oneandahalfasians.chordchartapp.controller.chart.chartEntity;
 
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.Chorus;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -18,7 +19,7 @@ public class ChorusController extends EntityController implements Initializable 
     public VBox chorusBox;
     private final Chorus chorus;
 
-    public ChorusController(ChartEntity chorus) {
+    public ChorusController(ChartEntity chorus, ChartEntityOptionsModel options) {
         this.chorus = (Chorus) chorus;
     }
 
