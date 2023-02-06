@@ -20,8 +20,11 @@ public class ChorusController extends EntityController implements Initializable 
     public ChartBodyBox chorusBox;
     private final Chorus chorus;
 
+    private ChartEntityOptionsModel options;
+
     public ChorusController(ChartEntity chorus, ChartEntityOptionsModel options) {
         this.chorus = (Chorus) chorus;
+        this.options = options;
     }
 
     public Chorus getChorus() {
@@ -31,6 +34,10 @@ public class ChorusController extends EntityController implements Initializable 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SectionRendererHelper.initializeSectionContents(chorus, chorus.getChordLines(), header, chorusBox);
+
+        if(options.isShouldFocus()){
+            chorusBox.getFirstRow().getFirstColumn().focusLast();
+        }
     }
 
     @Override

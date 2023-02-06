@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 public class InstrumentalController extends EntityController implements Initializable {
 
     private final Instrumental instrumental;
+    private ChartEntityOptionsModel options;
 
     @FXML
     public Text header;
@@ -24,6 +25,7 @@ public class InstrumentalController extends EntityController implements Initiali
 
     public InstrumentalController(ChartEntity instrumental, ChartEntityOptionsModel options) {
         this.instrumental = (Instrumental) instrumental;
+        this.options = options;
     }
 
     public Instrumental getInstrumental() {
@@ -33,6 +35,10 @@ public class InstrumentalController extends EntityController implements Initiali
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         SectionRendererHelper.initializeSectionContents(instrumental, instrumental.getChordLines(), header, instrumentalBox);
+
+        if(options.isShouldFocus()){
+            instrumentalBox.getFirstRow().getFirstColumn().focusLast();
+        }
     }
 
     @Override
