@@ -1,8 +1,10 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
+import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.EntityController;
 import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.VerseController;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Verse extends ChartEntity {
+
+    public static final String MAIN_CONTAINER_ID = "verseBox";
 
     protected List<LyricLine<Lyric>> lines = new ArrayList<>();
 
@@ -29,15 +33,36 @@ public class Verse extends ChartEntity {
     }
 
     @Override
-    public Node render() {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(FXMLHelper.load("chart/chartEntity/verse.fxml"));
-            loader.setControllerFactory(a -> new VerseController(this));
-            return loader.<Parent>load();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Class<? extends EntityController> getViewClass() {
+        return VerseController.class;
     }
+
+//    @Override
+//    public Node render(ChartEntityOptionsModel options) {
+//        try {
+//
+//            if(options.isShouldAddNewEmptyElement()){
+//                addEmptyChild();
+//            }
+//
+//            FXMLLoader loader = new FXMLLoader(FXMLHelper.load("chart/chartEntity/verse.fxml"));
+//            loader.setControllerFactory(a -> new VerseController(this));
+//            return loader.<Parent>load();
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    @Override
+//    public void addEmptyChild() {
+//        LyricLine<Lyric> lyricLine = new LyricLine<>();
+//        lyricLine.getLyricList().add(new Lyric(lyricLine));
+//        lines.add(lyricLine);
+//    }
+//
+//    @Override
+//    public String getMainContainerId() {
+//        return MAIN_CONTAINER_ID;
+//    }
 }

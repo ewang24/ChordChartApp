@@ -5,6 +5,9 @@ import com.oneandahalfasians.chordchartapp.data.entities.line.*;
 import com.oneandahalfasians.chordchartapp.view.CSS;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import com.oneandahalfasians.chordchartapp.view.TextUtils;
+import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyBox;
+import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyRowBox;
+import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyRowColumnBox;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -30,7 +33,7 @@ public class SectionRendererHelper {
      * @param header The header element for this view
      * @param contentBox The main content box for this view
      */
-    public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, VBox contentBox) {
+    public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, ChartBodyBox contentBox) {
 
        //Set basic universal section info
         header.setText(section.getHeaderName());
@@ -48,35 +51,34 @@ public class SectionRendererHelper {
         for (LyricLine<? extends Lyric> lyricLine : lines) {
 
             //lyricRow represents a visual line of content for a section
-            HBox lyricRow = new HBox();
+            ChartBodyRowBox lyricRow = new ChartBodyRowBox();
             if (lyricLine.getLyricList() != null) {
 
                 //process the contents of a row
                 List<? extends Lyric> lyricList = lyricLine.getLyricList();
                 for (int childIndex = 0; childIndex < lyricList.size(); childIndex++) {
                     Lyric lyric = lyricList.get(childIndex);
-                    lyricRow.getChildren().add(generateLyricColumn(lyric, lyricRow, childIndex));
+                    lyricRow.addColumn(generateLyricColumn(lyric, lyricRow, childIndex));
                 }
             }
 
             //Finally add our new row to the main container for the section
-            contentBox.getChildren().add(lyricRow);
+            contentBox.addRow(lyricRow);
         }
     }
 
-    private static VBox generateLyricColumn(Lyric lyric, HBox lyricRow, int index) {
+    private static ChartBodyRowColumnBox generateLyricColumn(Lyric lyric, ChartBodyRowBox lyricRow, int index) {
         return generateLyricColumn(lyric, lyricRow, index, false);
     }
 
-    private static VBox generateLyricColumn(Lyric lyric,
-                                            HBox lyricRow,
+    private static ChartBodyRowColumnBox generateLyricColumn(Lyric lyric,
+                                            ChartBodyRowBox lyricRow,
                                             int index,
                                             boolean requestFocus) {
 
         //Create the vertical container for the lyric text/chord grouping
-        VBox lyricColumn = new VBox();
+        ChartBodyRowColumnBox lyricColumn = new ChartBodyRowColumnBox();
         lyricColumn.setAlignment(Pos.BOTTOM_CENTER);
-
 
         //These are testing styles:
         String styles2 = "-fx-border-color: pink;\n" +
@@ -87,20 +89,15 @@ public class SectionRendererHelper {
 
 
         //Create the two parts of the grouping:
-        //first, create the chord
-        generateChordText(lyric, lyricColumn);
+        TextField chordText = generateChordText(lyric, lyricColumn);
+        TextField lyricText = generateLyricText(lyric, index, lyricRow, lyricColumn, requestFocus);
 
-        //second, create the lyric. Instrumentals do not have lyrics,
-        //so make sure that we are not dealing with an InstrumentalLyric.
-        if(!(lyric instanceof InstrumentalLyric)){
-            generateLyricText(lyric, index,lyricRow, lyricColumn, requestFocus);
-        }
-
+        lyricColumn.setup(chordText, lyricText);
 
         return lyricColumn;
     }
 
-    private static void generateChordText(Lyric lyric, VBox lyricColumn){
+    private static TextField generateChordText(Lyric lyric, VBox lyricColumn){
         //Add the chord if there is a chord anchored to the lyric
         if (lyric.getAnchorPoint() != null) {
             Chord anchoredChord = lyric.getAnchorPoint().getChord();
@@ -111,16 +108,23 @@ public class SectionRendererHelper {
 
             setTextFieldWidthListener(chordText);
 
-            lyricColumn.getChildren().add(chordText);
+            return chordText;
         }
 
+        return null;
     }
-    private static void generateLyricText(Lyric lyric,
+    private static TextField generateLyricText(Lyric lyric,
                                                int index,
                                                HBox lyricRow,
                                                VBox lyricColumn,
                                                boolean requestFocus
     ) {
+        //Create the lyric. Instrumentals do not have lyrics,
+        //so make sure that we are not dealing with an InstrumentalLyric.
+        if(lyric instanceof InstrumentalLyric){
+            return null;
+        }
+
         TextField lyricText = new TextField(lyric.getLyric());
         setTextFieldWidthListener(lyricText);
 
@@ -142,11 +146,7 @@ public class SectionRendererHelper {
 
         setTextFieldKeyListeners(lyricText, true);
 
-        lyricColumn.getChildren().add(lyricText);
-
-        if (requestFocus) {
-            lyricText.requestFocus();
-        }
+        return lyricText;
     }
 
     private static void setTextFieldWidthListener(TextField textField) {
@@ -174,7 +174,7 @@ public class SectionRendererHelper {
 
                     KeyCode keyCode = ((KeyEvent) event).getCode();
 
-                    //Proces space key events
+                    //Process space key events
                     if (keyCode.equals(KeyCode.SPACE)) {
 
                         //If the text has no contents, then there is nothing to do
@@ -185,19 +185,22 @@ public class SectionRendererHelper {
                         //Otherwise, we will want to add a new text field
                         Integer index = (Integer) FXMLHelper.data(textField, Lyric.LYRIC_INDEX);
                         if (index != null) {
-                            HBox lyricRow = (HBox) FXMLHelper.data(textField, Lyric.PARENT);
-                            ObservableList<Node> children = lyricRow.getChildren();
+                            ChartBodyRowBox lyricRow = (ChartBodyRowBox) FXMLHelper.data(textField, Lyric.PARENT);
 
                             int newIndex = index + 1;
-                            VBox lyricColumn = generateLyricColumn(new Lyric(null), lyricRow, newIndex, true);
-                            children.add(newIndex, lyricColumn);
+                            ChartBodyRowColumnBox lyricColumn = generateLyricColumn(new Lyric(null), lyricRow, newIndex, true);
 
-                            for (int i = 0; i < children.size(); i++) {
-                                FXMLHelper.data(children.get(i), Lyric.LYRIC_INDEX, i);
+                            //This shouldn't happen, but if it does there isn't much we can do so just throw an exception.
+                            if(lyricRow == null)
+                            {
+                                throw new RuntimeException(
+                                        "Something has gone terribly wrong." +
+                                                " Tried adding a column to a row but the row was null."
+                                );
                             }
 
-                            lyricColumn.getChildren().get(lyricColumn.getChildren().size() - 1).requestFocus();
-
+                            lyricRow.addColumn(newIndex, lyricColumn);
+                            lyricColumn.focusLast();
                         }
 
                     }

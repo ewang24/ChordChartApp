@@ -1,9 +1,15 @@
 package com.oneandahalfasians.chordchartapp.data.entities;
 
+import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.EntityController;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+
+import java.util.UUID;
 
 public abstract class ChartEntity {
 
+    private UUID uuid;
     protected String headerName;
 
     public String getHeaderName() {
@@ -15,7 +21,9 @@ public abstract class ChartEntity {
         return this;
     }
 
-//    public abstract void addLyric(String lyric, int index);
+    /*
+    Abstract Methods
+     */
 
-    public abstract Node render();
+    public abstract Class<? extends EntityController> getViewClass();
 }

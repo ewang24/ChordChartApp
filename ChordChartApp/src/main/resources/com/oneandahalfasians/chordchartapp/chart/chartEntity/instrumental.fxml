@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
+<!--        fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController"-->
+<?import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.InstrumentalController"
       prefHeight="400.0" prefWidth="600.0">
     <Text fx:id="header">
     </Text>
-    <VBox fx:id="instrumentalBox">
-    </VBox>
+    <ChartBodyBox fx:id="instrumentalBox">
+    </ChartBodyBox>
 </VBox>

@@ -1,7 +1,9 @@
 package com.oneandahalfasians.chordchartapp.controller.chart;
 
+import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.EntityController;
 import com.oneandahalfasians.chordchartapp.data.Chart;
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -80,9 +83,31 @@ public class ChartController implements Initializable {
     }
 
     public void addChild(ChartEntity newEntity) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load("chart/chartEntityRow.fxml"));
-        fxmlLoader.setControllerFactory(a -> new ChartEntityRowController(newEntity));
-        Parent row = fxmlLoader.load();
-        container.getChildren().add(row);
+        addChild(newEntity, false, false);
+    }
+
+    public void addChild(ChartEntity newEntity, boolean shouldFocus, boolean shouldAddNewEmptyElement) throws IOException {
+
+        try {
+            EntityController controller =
+                    newEntity.getViewClass()
+                            .getDeclaredConstructor(ChartEntity.class, ChartEntityOptionsModel.class)
+                            .newInstance(
+                                    newEntity,
+                                    new ChartEntityOptionsModel(shouldFocus, shouldAddNewEmptyElement)
+                            );
+
+            FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load(controller.getFxmlFileName()));
+            fxmlLoader.setController(controller);
+            Parent row = fxmlLoader.load();
+            container.getChildren().add(row);
+        } catch (
+                InstantiationException |
+                IllegalAccessException |
+                InvocationTargetException |
+                NoSuchMethodException e
+        ) {
+            throw new RuntimeException(e);
+        }
     }
 }

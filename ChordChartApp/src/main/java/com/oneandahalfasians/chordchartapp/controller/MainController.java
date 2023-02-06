@@ -41,9 +41,10 @@ public class MainController implements Initializable {
     public void addVerse(ActionEvent e){
         try {
             var verse = ChartService.getInstance().addVerse();
-            chartViewController.addChild(verse);
+            chartViewController.addChild(verse, true, true);
         } catch (IOException ex) {
-            System.out.println("You dun goofed:\n" + e);
+            System.out.println("You dun goofed:\n" + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -51,9 +52,9 @@ public class MainController implements Initializable {
     public void addChorus(ActionEvent e){
         try {
             var newChorus = ChartService.getInstance().addChorus();
-            chartViewController.addChild(newChorus);
+            chartViewController.addChild(newChorus, true, true);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.\n" + e);
+            System.out.println("You dun goofed.\n" + ex.getMessage());
         }
     }
 
@@ -63,7 +64,7 @@ public class MainController implements Initializable {
             var newBridge = ChartService.getInstance().addBridge();
             chartViewController.addChild(newBridge);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.\n" + e);
+            System.out.println("You dun goofed.\n" + ex.getMessage());
         }
     }
 
@@ -73,7 +74,7 @@ public class MainController implements Initializable {
             var newInstrumental = ChartService.getInstance().addInstrumental();
             chartViewController.addChild(newInstrumental);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.\n" + e);
+            System.out.println("You dun goofed.\n" + ex.getMessage());
         }
     }
 
@@ -83,7 +84,7 @@ public class MainController implements Initializable {
             var newIntro = ChartService.getInstance().addIntro();
             chartViewController.addChild(newIntro);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.\n" + e);
+            System.out.println("You dun goofed.\n" + ex.getMessage());
         }
     }
 
@@ -93,7 +94,7 @@ public class MainController implements Initializable {
             var newOutro = ChartService.getInstance().addOutro();
             chartViewController.addChild(newOutro);
         } catch (IOException ex) {
-            System.out.println("You dun goofed.\n" + e);
+            System.out.println("You dun goofed.\n" + ex.getMessage());
         }
     }
 }
