@@ -5,6 +5,7 @@ import com.oneandahalfasians.chordchartapp.data.entities.Verse;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
+import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyBox;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -24,7 +25,7 @@ public class VerseController extends EntityController implements Initializable {
         FXML Fields
      */
     @FXML
-    public VBox verseBox;
+    public ChartBodyBox verseBox;
 
     @FXML
     private Text header;
@@ -60,12 +61,9 @@ public class VerseController extends EntityController implements Initializable {
         SectionRendererHelper.initializeSectionContents(verse, verse.getLines(), header, verseBox);
 
         if(options.isShouldFocus()){
-            var firstRow = verseBox.getChildren().get(0);
-            if(!(firstRow instanceof HBox)){
-                return;
-            }
+            var firstRow = verseBox.getFirstRow();
 
-            var lyricColumn = ((HBox) firstRow).getChildren().get(0);
+            var lyricColumn = firstRow.getChildren().get(0);
 
             if(!(lyricColumn instanceof VBox)){
                 return;

@@ -5,11 +5,12 @@
 <?import javafx.scene.text.Text?>
 
 <!--        fx:controller="com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.ChorusController"-->
+<?import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyBox?>
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
     <Text fx:id="header">
     </Text>
-    <VBox fx:id="chorusBox">
-    </VBox>
+    <ChartBodyBox fx:id="chorusBox">
+    </ChartBodyBox>
    <padding>
       <Insets left="50.0" />
    </padding>
