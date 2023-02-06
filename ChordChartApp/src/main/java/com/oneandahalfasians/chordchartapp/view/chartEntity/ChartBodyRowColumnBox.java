@@ -1,5 +1,8 @@
 package com.oneandahalfasians.chordchartapp.view.chartEntity;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -19,10 +22,12 @@ public class ChartBodyRowColumnBox extends VBox {
         this.chordText = chordText;
         this.lyricText = lyricText;
 
-        super.getChildren().add(0, chordText);
+        if(chordText != null){
+            super.getChildren().add(chordText);
+        }
 
         if(lyricText != null){
-            super.getChildren().add(1, lyricText);
+            super.getChildren().add(chordText == null? 0: 1, lyricText);
         }
     }
 
@@ -35,11 +40,27 @@ public class ChartBodyRowColumnBox extends VBox {
     }
 
     public void focusLast(){
+        TextField textToFocus = null;
         if(lyricText != null){
-            lyricText.requestFocus();
+            textToFocus = lyricText;
         }
         else if(chordText != null){
-            chordText.requestFocus();
+            textToFocus = chordText;
         }
+        else{
+            return;
+        }
+
+        //TODO: reevaluate this and see if there is an easier way.
+        final TextField finalTextToFocus = textToFocus;
+        textToFocus.sceneProperty().addListener(new ChangeListener<>() {
+            @Override
+            public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
+                if (newValue != null) {
+                    finalTextToFocus.requestFocus();
+                    finalTextToFocus.sceneProperty().removeListener(this);
+                }
+            }
+        });
     }
 }

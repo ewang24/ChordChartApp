@@ -8,12 +8,6 @@ import javafx.scene.layout.HBox;
 
 public class ChartBodyRowBox extends HBox {
 
-
-    @Override
-    public ObservableList<Node> getChildren() {
-        throw new UnsupportedOperationException("This method is blocked");
-    }
-
     public void addColumn(ChartBodyRowColumnBox child){
         super.getChildren().add(child);
     }

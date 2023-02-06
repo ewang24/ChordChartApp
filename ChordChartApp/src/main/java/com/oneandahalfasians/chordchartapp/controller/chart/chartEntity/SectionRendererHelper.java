@@ -121,7 +121,7 @@ public class SectionRendererHelper {
     ) {
         //Create the lyric. Instrumentals do not have lyrics,
         //so make sure that we are not dealing with an InstrumentalLyric.
-        if(!(lyric instanceof InstrumentalLyric)){
+        if(lyric instanceof InstrumentalLyric){
             return null;
         }
 

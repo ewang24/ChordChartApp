@@ -6,6 +6,8 @@ import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
 import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyBox;
+import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyRowBox;
+import com.oneandahalfasians.chordchartapp.view.chartEntity.ChartBodyRowColumnBox;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -61,27 +63,7 @@ public class VerseController extends EntityController implements Initializable {
         SectionRendererHelper.initializeSectionContents(verse, verse.getLines(), header, verseBox);
 
         if(options.isShouldFocus()){
-            var firstRow = verseBox.getFirstRow();
-
-            var lyricColumn = firstRow.getChildren().get(0);
-
-            if(!(lyricColumn instanceof VBox)){
-                return;
-            }
-
-            //super messy ugh this makes me want to commit sudoku. TODO: need to figure out a way to not want to die when looking at this.
-            var textToFocus = ((TextField) ((VBox) lyricColumn).getChildren().get(((VBox) lyricColumn).getChildren().size() - 1));
-
-            //TODO: reevaluate this and see if there is an easier way.
-            textToFocus.sceneProperty().addListener(new ChangeListener<>() {
-                @Override
-                public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-                    if (newValue != null) {
-                        textToFocus.requestFocus();
-                        textToFocus.sceneProperty().removeListener(this);
-                    }
-                }
-            });
+            verseBox.getFirstRow().getFirstColumn().focusLast();
         }
     }
 

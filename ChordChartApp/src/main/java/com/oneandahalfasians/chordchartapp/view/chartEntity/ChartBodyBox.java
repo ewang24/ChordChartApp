@@ -6,11 +6,6 @@ import javafx.scene.layout.VBox;
 
 public class ChartBodyBox extends VBox {
 
-    @Override
-    public ObservableList<Node> getChildren() {
-        throw new UnsupportedOperationException("This method is blocked");
-    }
-
     public void addRow(ChartBodyRowBox row){
         super.getChildren().add(row);
     }
