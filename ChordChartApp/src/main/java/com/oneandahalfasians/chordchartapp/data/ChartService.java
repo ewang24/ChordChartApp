@@ -3,6 +3,7 @@ package com.oneandahalfasians.chordchartapp.data;
 import com.oneandahalfasians.chordchartapp.data.entities.*;
 import com.oneandahalfasians.chordchartapp.data.entities.key.*;
 import com.oneandahalfasians.chordchartapp.data.entities.line.*;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +12,7 @@ import java.util.List;
 public class ChartService{
 
     private Chart chart;
-
+    private Stage stage;
     private static ChartService chartServiceInstance;
     private ChartService(){
         chart = new Chart();
@@ -90,6 +91,14 @@ public class ChartService{
         this.chart = chart;
     }
 
+    public Stage getStage() {
+        return stage;
+    }
+
+    public ChartService setStage(Stage stage) {
+        this.stage = stage;
+        return this;
+    }
 
     private List<Lyric> generateLyric(String string, List<Chord> chordLine, LyricLine lyricLine){
         List<Lyric> lyricList = new ArrayList<>();

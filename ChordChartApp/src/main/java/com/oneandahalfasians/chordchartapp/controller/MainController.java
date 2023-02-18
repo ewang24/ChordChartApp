@@ -32,8 +32,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appCenterVBox.setId("app-center-vbox");
-
-        chartViewController.setChart(ChartService.getInstance().getChart());
+    //chartViewController.setChart(ChartService.getInstance().getChart());
     }
 
 
