@@ -32,9 +32,12 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appCenterVBox.setId("app-center-vbox");
-    //chartViewController.setChart(ChartService.getInstance().getChart());
     }
 
+    public void loadChart(){
+        System.out.println("App center" + appCenterVBox.getWidth());
+        chartViewController.setChart(ChartService.getInstance().getChart());
+    }
 
     @FXML
     public void addVerse(ActionEvent e){

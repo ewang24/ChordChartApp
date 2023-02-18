@@ -4,6 +4,7 @@ import com.oneandahalfasians.chordchartapp.controller.MainController;
 import com.oneandahalfasians.chordchartapp.data.ChartService;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Rectangle2D;
@@ -23,7 +24,10 @@ public class ChordChartApplication extends Application {
         ChartService chartService = ChartService.getInstance();
         chartService.generateChart_TEST();
 
+        MainController mainController = new MainController();
+
         FXMLLoader fxmlLoader = new FXMLLoader(ChordChartApplication.class.getResource("main.fxml"));
+        fxmlLoader.setController(mainController);
 
         Scene scene = new Scene(fxmlLoader.load());
 
@@ -37,6 +41,7 @@ public class ChordChartApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
+        Platform.runLater(mainController::loadChart);
     }
 
     public static void main(String[] args) {
