@@ -23,7 +23,13 @@ public class Page extends VBox {
         this.previousPage = previousPage;
         this.nextPage = nextPage;
         this.setMinHeight(totalHeight);
-        this.setHeight(totalHeight);
+        this.setMaxHeight(Double.MAX_VALUE);
+        String cssLayout = """
+                -fx-border-color: black;
+                -fx-border-width: 1;
+                -fx-border-style: solid;
+                """;
+        this.setStyle(cssLayout);
     }
 
     public Page addPagePrevious(){
@@ -53,21 +59,28 @@ public class Page extends VBox {
         this.nextPage = nextPage;
     }
 
-    public boolean hasSpace(){
-        return accumulatedHeight > totalHeight;
+    public void addRow(Parent row){
+        addRow(row, null);
     }
 
-    public boolean hasSpace(double rowHeight){
-        return accumulatedHeight > totalHeight + rowHeight;
-    }
-
-    public void addRow(Parent row, Integer index, double rowHeight){
-        accumulatedHeight += rowHeight;
+    public void addRow(Parent row, Integer index){
         if (index == null) {
             getChildren().add(row);
         }
         else{
             getChildren().add(index, row);
         }
+    }
+
+    public void removeLastAdded(){
+        if(getChildren().isEmpty()){
+            return;
+        }
+
+        remove(getChildren().size() - 1);
+    }
+
+    public void remove(int index){
+        getChildren().remove(index, index + 1);
     }
 }

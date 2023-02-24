@@ -14,6 +14,6 @@ public enum PageSize {
     }
 
     public double calculateRatio(double width){
-        return width * (height/this.width);
+        return Math.ceil(width * (height/this.width) * 0.4);
     }
 }

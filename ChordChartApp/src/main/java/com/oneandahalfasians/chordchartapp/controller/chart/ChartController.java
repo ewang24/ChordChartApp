@@ -66,6 +66,7 @@ public class ChartController implements Initializable {
         container.setMinWidth(width);
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         scrollPane.setMaxWidth(Double.MAX_VALUE);
+        scrollPane.setMaxHeight(Double.MAX_VALUE);
 //        scrollPane.setPrefWidth(width);
 
 
@@ -82,7 +83,6 @@ public class ChartController implements Initializable {
             Text title = new Text(chart.getTitle());
             title.setFont(Font.font("arial", FontWeight.BOLD,  30));
             scrollingBox.getChildren().add(title);
-            IntStream.rangeClosed(0, 100).forEach(i -> scrollingBox.getChildren().add(new Text(i + "")));
         }
 
         //Generate a horizontal display for the chart info
@@ -98,11 +98,11 @@ public class ChartController implements Initializable {
             scrollingBox.getChildren().add(infoBox);
         }
 
-//        try {
-//            addChild(null, false, false);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            addChild(null, false, false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void addChild(ChartEntity newEntity) throws IOException {
@@ -123,30 +123,9 @@ public class ChartController implements Initializable {
             pageToUse = pages.get(pages.size() - 1);
         }
 
-//        container.getChildren().add(pageToUse);
+        scrollingBox.getChildren().add(pageToUse);
 
         try {
-
-//            Stage stage = new Stage();
-//
-//            VBox vbox = new VBox();
-//            Scene scene = new Scene(vbox);
-//            scene.getStylesheets().add(FXMLHelper.loadCSS("css/app.css"));
-//
-//            stage.setScene(scene);
-//
-//            vbox.getChildren().add(row);
-//
-//            vbox.applyCss();
-//            vbox.layout();
-
-//            System.out.println("Vbox height: " + vbox.getHeight());
-
-//            Platform.runLater(() -> System.out.println("Vbox height later: " + row.getHeight()));
-
-//            stage.show();
-
-//            scrollingBox.getChildren().clear();
 
             List<ChartEntity> chartEntityList = chart.getEntityList();
 
@@ -164,19 +143,29 @@ public class ChartController implements Initializable {
                 fxmlLoader.setController(controller);
                 VBox row = fxmlLoader.<VBox>load();
 
-                pageToUse.addRow(row, null, 0);
+                pageToUse.addRow(row);
 
-                pageToUse.applyCss();
-                pageToUse.layout();
+                scrollingBox.applyCss();
+                scrollingBox.layout();
 
-                System.out.println(pageToUse.getHeight());
+//                System.out.println(pageToUse.getHeight() + ", " + pageHeight);
+                if(pageToUse.getHeight() > pageHeight){
+                    System.out.println("NEW PAGE");
+                    pageToUse.removeLastAdded();
 
-                if(!pageToUse.hasSpace()){
                     pageToUse = pageToUse.addPageNext();
-//                    container.getChildren().add(pageToUse);
+                    scrollingBox.getChildren().add(pageToUse);
+
+                    pageToUse.addRow(row);
+
+                    pages.add(pageToUse);
+
+                    scrollingBox.applyCss();
+                    scrollingBox.layout();
                 }
             }
 
+            pages.forEach(p -> System.out.println(p.getChildren().size()));
         } catch (
                 InstantiationException |
                 IllegalAccessException |

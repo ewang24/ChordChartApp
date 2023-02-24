@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Verse extends ChartEntity {
+public class Verse extends ChartEntity implements Cloneable{
 
     public static final String MAIN_CONTAINER_ID = "verseBox";
 
@@ -35,6 +35,17 @@ public class Verse extends ChartEntity {
     @Override
     public Class<? extends EntityController> getViewClass() {
         return VerseController.class;
+    }
+
+    @Override
+    public Verse clone() {
+        try {
+            Verse clone = (Verse) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
 //    @Override

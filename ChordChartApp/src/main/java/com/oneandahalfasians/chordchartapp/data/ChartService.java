@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ChartService{
 
@@ -40,13 +41,13 @@ public class ChartService{
                 new Chord(new Key(KeyLetter.B, Accidental.SHARP), Quality.DOMINANT),
                 new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR, new Extension(Accidental.SHARP, 11))));
 
-        LyricLine lyricLine = new LyricLine();
+        LyricLine<Lyric> lyricLine = new LyricLine<>();
         lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordList, lyricLine));
 
-        LyricLine lyric2Line = new LyricLine();
+        LyricLine<Lyric> lyric2Line = new LyricLine<>();
         lyric2Line.getLyricList().addAll(generateLyric("This song is super cool", chordList, lyric2Line));
 
-        LyricLine lyric3Line = new LyricLine();
+        LyricLine<Lyric> lyric3Line = new LyricLine<>();
         lyric3Line.getLyricList().addAll(generateLyric("No really, it is please believe me!", chordList, lyric3Line));
 
         //Added a helper method to Verse.java called addLine() that you can pass a cord and a lyric too.
@@ -78,6 +79,7 @@ public class ChartService{
         instrumental.addLine(lyric3Line);
 
         chart.getEntityList().add(verse);
+        IntStream.rangeClosed(0, 50).forEach(i ->  chart.getEntityList().add(verse.clone()));
         this.chart.incrementMaxVerse();
 
         chart.getEntityList().add(chorus);

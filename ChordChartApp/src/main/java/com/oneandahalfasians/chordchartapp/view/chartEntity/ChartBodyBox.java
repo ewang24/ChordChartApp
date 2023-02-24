@@ -18,22 +18,23 @@ import java.io.IOException;
  */
 public class ChartBodyBox extends VBox {
 //love for Annie
+
     public void addRow(ChartBodyRowBox row) {
 
-        Stage stage = new Stage();
-
-        VBox vbox = new VBox();
-        Scene scene = new Scene(vbox);
-
-        stage.setScene(scene);
-
-        vbox.getChildren().add(row);
-
-        vbox.applyCss();
-        vbox.layout();
+//        Stage stage = new Stage();
+//
+//        VBox vbox = new VBox();
+//        Scene scene = new Scene(vbox);
+//
+//        stage.setScene(scene);
+//
+//        vbox.getChildren().add(row);
+//
+//        vbox.applyCss();
+//        vbox.layout();
 
 //        System.out.println(row.getBoundsInParent());
-        stage.close();
+//        stage.close();z
         super.getChildren().add(row);
 
 
