@@ -13,7 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -26,18 +28,29 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 public class ChartController implements Initializable {
 
+
+
     /*
-        FXML objects
-     */
+                FXML objects
+             */
     @FXML
     private URL location;
+
     @FXML
     public ListView<ChartEntity> chartEntitiesListView;
+
     @FXML
     public VBox container;
+
+    @FXML
+    public ScrollPane scrollPane;
+
+    @FXML
+    public VBox scrollingBox;
 
     public List<Page> pages = new ArrayList<>();
 
@@ -46,21 +59,30 @@ public class ChartController implements Initializable {
      */
     private Chart chart;
     private double pageHeight = 0;
+    private double width = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        container.setMinWidth(width);
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
+        scrollPane.setMaxWidth(Double.MAX_VALUE);
+//        scrollPane.setPrefWidth(width);
 
+
+//        scrollPane.setMinViewportWidth(width);
     }
 
-    public ChartController setupChart(Chart chart, double pageHeight) {
+    public void setupChart(Chart chart, double pageHeight, double width) {
         this.chart = chart;
         this.pageHeight = pageHeight;
+        this.width = width;
 
         //Display chart title if present
         if(chart.getTitle() != null){
             Text title = new Text(chart.getTitle());
             title.setFont(Font.font("arial", FontWeight.BOLD,  30));
-            container.getChildren().add(title);
+            scrollingBox.getChildren().add(title);
+            IntStream.rangeClosed(0, 100).forEach(i -> scrollingBox.getChildren().add(new Text(i + "")));
         }
 
         //Generate a horizontal display for the chart info
@@ -73,16 +95,14 @@ public class ChartController implements Initializable {
         infoBox.getChildren().add(new Text(chart.getTempoString()));
 
         if(!infoBox.getChildren().isEmpty()){
-            container.getChildren().add(infoBox);
+            scrollingBox.getChildren().add(infoBox);
         }
 
-        try {
-            addChild(null, false, false);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return this;
+//        try {
+//            addChild(null, false, false);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void addChild(ChartEntity newEntity) throws IOException {
@@ -103,7 +123,7 @@ public class ChartController implements Initializable {
             pageToUse = pages.get(pages.size() - 1);
         }
 
-        container.getChildren().add(pageToUse);
+//        container.getChildren().add(pageToUse);
 
         try {
 
@@ -126,7 +146,7 @@ public class ChartController implements Initializable {
 
 //            stage.show();
 
-            container.getChildren().clear();
+//            scrollingBox.getChildren().clear();
 
             List<ChartEntity> chartEntityList = chart.getEntityList();
 
@@ -153,7 +173,7 @@ public class ChartController implements Initializable {
 
                 if(!pageToUse.hasSpace()){
                     pageToUse = pageToUse.addPageNext();
-                    container.getChildren().add(pageToUse);
+//                    container.getChildren().add(pageToUse);
                 }
             }
 

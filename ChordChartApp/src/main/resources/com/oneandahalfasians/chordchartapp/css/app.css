@@ -1,3 +1,11 @@
+.scroll-pane{
+    -fx-background-color: red;
+}
+
+.v-box{
+    -fx-background-color: blue;
+}
+
 .root{
     -fx-background: white;
     -font-size: 10;

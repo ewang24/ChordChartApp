@@ -33,6 +33,7 @@ public class Page extends VBox {
 
     public Page addPageNext(){
         this.nextPage = new Page(totalHeight);
+        this.nextPage.setPreviousPage(this);
         return this.nextPage;
     }
 

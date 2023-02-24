@@ -32,7 +32,7 @@ public class MainController implements Initializable {
 //        System.out.println("App center" + appCenterVBox.getWidth());
         double height = PageSize.LETTER.calculateRatio(appCenterVBox.getWidth());
 //        System.out.println(height);
-        chartViewController.setupChart(ChartService.getInstance().getChart(), height);
+        chartViewController.setupChart(ChartService.getInstance().getChart(), height, appCenterVBox.getWidth());
     }
 
     @FXML
