@@ -68,11 +68,6 @@ public class ChartController implements Initializable {
         VBox.setVgrow(container, Priority.ALWAYS);
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         scrollPane.setMaxWidth(Double.MAX_VALUE);
-//        scrollPane.setMaxHeight(pageHeight);
-//        scrollPane.setPrefWidth(width);
-
-
-//        scrollPane.setMinViewportWidth(width);
     }
 
     public void setupChart(Chart chart, double pageHeight, double width) {
@@ -151,7 +146,6 @@ public class ChartController implements Initializable {
                 scrollPane.layout();
 
                 if(pageToUse.getHeight() > pageHeight){
-                    System.out.println("NEW PAGE");
                     pageToUse.removeLastAdded();
 
                     pageToUse = pageToUse.addPageNext();
@@ -163,8 +157,6 @@ public class ChartController implements Initializable {
                     pages.add(pageToUse);
                 }
             }
-
-            pages.forEach(p -> System.out.println(p.getChildren().size()));
         } catch (
                 InstantiationException |
                 IllegalAccessException |
