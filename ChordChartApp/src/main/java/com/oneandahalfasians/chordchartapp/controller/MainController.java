@@ -1,11 +1,8 @@
 package com.oneandahalfasians.chordchartapp.controller;
 
 import com.oneandahalfasians.chordchartapp.controller.chart.ChartController;
-import com.oneandahalfasians.chordchartapp.data.Chart;
 import com.oneandahalfasians.chordchartapp.data.ChartService;
-import com.oneandahalfasians.chordchartapp.data.entities.*;
-import com.oneandahalfasians.chordchartapp.data.entities.key.*;
-import com.oneandahalfasians.chordchartapp.data.entities.line.*;
+import com.oneandahalfasians.chordchartapp.view.PageSize;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,9 +11,6 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -35,8 +29,10 @@ public class MainController implements Initializable {
     }
 
     public void loadChart(){
-        System.out.println("App center" + appCenterVBox.getWidth());
-        chartViewController.setChart(ChartService.getInstance().getChart());
+//        System.out.println("App center" + appCenterVBox.getWidth());
+        double height = PageSize.LETTER.calculateRatio(appCenterVBox.getWidth());
+//        System.out.println(height);
+        chartViewController.setupChart(ChartService.getInstance().getChart(), height);
     }
 
     @FXML

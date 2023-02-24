@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Class that represents a renderable chart section (verse, chorus, etc.)
+ * Class that represents a renderable chart section (e.g. a verse, chorus, etc.)
  */
 public class ChartBodyBox extends VBox {
-
+//love for Annie
     public void addRow(ChartBodyRowBox row) {
 
         Stage stage = new Stage();
@@ -32,14 +32,14 @@ public class ChartBodyBox extends VBox {
         vbox.applyCss();
         vbox.layout();
 
-        System.out.println(row.getBoundsInParent());
+//        System.out.println(row.getBoundsInParent());
         stage.close();
         super.getChildren().add(row);
 
 
-        Platform.runLater(
-                () -> System.out.println("btn width: " + row.getBoundsInParent())
-        );
+//        Platform.runLater(
+//                () -> System.out.println("btn width: " + row.getBoundsInParent())
+//        );
 
     }
 

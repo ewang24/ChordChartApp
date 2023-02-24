@@ -35,10 +35,18 @@ public class SectionRendererHelper {
      */
     public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, ChartBodyBox contentBox) {
 
+        String cssLayout = """
+                -fx-border-color: red;
+                -fx-border-width: 3;
+                -fx-border-style: dashed;
+                """;
+
+//        contentBox.setStyle(cssLayout);
+
        //Set basic universal section info
         header.setText(section.getHeaderName());
         header.setFont(Font.font("arial", FontWeight.BOLD, 20));
-        contentBox.setStyle(String.format("-fx-padding: 0 %s 0 %s", CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING, CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING));
+        contentBox.setStyle(cssLayout + String.format("-fx-padding: 0 %s 0 %s", CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING, CSS.VERSE_CONTROLLER__VERSE_BOX__PADDING));
 
         //These are testing styles
         String styles = "-fx-border-color: blue;\n" +
