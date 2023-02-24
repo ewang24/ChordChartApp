@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -64,9 +65,10 @@ public class ChartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         container.setMinWidth(width);
+        VBox.setVgrow(container, Priority.ALWAYS);
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         scrollPane.setMaxWidth(Double.MAX_VALUE);
-        scrollPane.setMaxHeight(Double.MAX_VALUE);
+//        scrollPane.setMaxHeight(pageHeight);
 //        scrollPane.setPrefWidth(width);
 
 
@@ -145,23 +147,20 @@ public class ChartController implements Initializable {
 
                 pageToUse.addRow(row);
 
-                scrollingBox.applyCss();
-                scrollingBox.layout();
+                scrollPane.applyCss();
+                scrollPane.layout();
 
-//                System.out.println(pageToUse.getHeight() + ", " + pageHeight);
                 if(pageToUse.getHeight() > pageHeight){
                     System.out.println("NEW PAGE");
                     pageToUse.removeLastAdded();
 
                     pageToUse = pageToUse.addPageNext();
                     scrollingBox.getChildren().add(pageToUse);
-
+                    VBox.setVgrow(pageToUse, Priority.ALWAYS);
+                    GridPane.setVgrow(pageToUse, Priority.ALWAYS);
                     pageToUse.addRow(row);
 
                     pages.add(pageToUse);
-
-                    scrollingBox.applyCss();
-                    scrollingBox.layout();
                 }
             }
 
