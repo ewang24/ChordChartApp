@@ -41,6 +41,7 @@ public class ChordChartApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
+//        mainController.loadChart();
         Platform.runLater(mainController::loadChart);
     }
 

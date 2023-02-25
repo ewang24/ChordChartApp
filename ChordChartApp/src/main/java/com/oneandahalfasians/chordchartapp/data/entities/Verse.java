@@ -38,6 +38,11 @@ public class Verse extends ChartEntity implements Cloneable{
     }
 
     @Override
+    public EntityController getEntityController(ChartEntity chartEntity, ChartEntityOptionsModel options) {
+        return new VerseController(chartEntity, options);
+    }
+
+    @Override
     public Verse clone() {
         try {
             Verse clone = (Verse) super.clone();

@@ -6,6 +6,7 @@ import com.oneandahalfasians.chordchartapp.controller.chart.chartEntity.Instrume
 import com.oneandahalfasians.chordchartapp.data.entities.ChartEntity;
 import com.oneandahalfasians.chordchartapp.data.entities.line.Lyric;
 import com.oneandahalfasians.chordchartapp.data.entities.line.LyricLine;
+import com.oneandahalfasians.chordchartapp.model.ChartEntityOptionsModel;
 import com.oneandahalfasians.chordchartapp.view.FXMLHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -36,6 +37,11 @@ public class Chorus extends ChartEntity {
     @Override
     public Class<? extends EntityController> getViewClass() {
         return ChorusController.class;
+    }
+
+    @Override
+    public EntityController getEntityController(ChartEntity chartEntity, ChartEntityOptionsModel options) {
+        return new ChorusController(chartEntity, options);
     }
 
     //    @Override

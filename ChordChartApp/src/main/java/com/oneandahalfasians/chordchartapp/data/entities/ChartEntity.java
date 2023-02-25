@@ -26,4 +26,6 @@ public abstract class ChartEntity {
      */
 
     public abstract Class<? extends EntityController> getViewClass();
+
+    public abstract EntityController getEntityController(ChartEntity chartEntity, ChartEntityOptionsModel options);
 }

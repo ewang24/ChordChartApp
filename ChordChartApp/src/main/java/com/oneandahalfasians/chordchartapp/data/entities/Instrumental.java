@@ -48,6 +48,11 @@ public class Instrumental extends ChartEntity {
         return InstrumentalController.class;
     }
 
+    @Override
+    public EntityController getEntityController(ChartEntity chartEntity, ChartEntityOptionsModel options) {
+        return new InstrumentalController(chartEntity, options);
+    }
+
 //    @Override
 //    public Node render(ChartEntityOptionsModel options) {
 //        try {

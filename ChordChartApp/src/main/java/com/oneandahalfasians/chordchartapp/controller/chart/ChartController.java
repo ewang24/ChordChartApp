@@ -132,64 +132,61 @@ public class ChartController implements Initializable {
         scrollPane.layout();
         scrollPane.applyCss();
 
-        try {
+        List<ChartEntity> chartEntityList = chart.getEntityList();
 
-            List<ChartEntity> chartEntityList = chart.getEntityList();
-
-            //Create a row for each of the chart entities (verses, choruses, bridge, etc.)
-            for (ChartEntity chartEntity : chartEntityList) {
-                EntityController controller =
-                        chartEntity.getViewClass()
-                                .getDeclaredConstructor(ChartEntity.class, ChartEntityOptionsModel.class)
-                                .newInstance(
-                                        chartEntity,
-                                        new ChartEntityOptionsModel(false, false)
-                                );
+        //Create a row for each of the chart entities (verses, choruses, bridge, etc.)
+        for (ChartEntity chartEntity : chartEntityList) {
+//                EntityController controller =
+//                        chartEntity.getViewClass()
+//                                .getDeclaredConstructor(ChartEntity.class, ChartEntityOptionsModel.class)
+//                                .newInstance(
+//                                        chartEntity,
+//                                        new ChartEntityOptionsModel(false, false)
+//                                );
 
 //                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load(controller.getFxmlFileName()));
 //                fxmlLoader.setController(controller);
 //                VBox row = fxmlLoader.<VBox>load();
 
-                Parent row = controller.getContents();
-                pageToUse.addRow(row);
+            Parent row = chartEntity.getEntityController(chartEntity, new ChartEntityOptionsModel(false, false)).getContents();
+            pageToUse.addRow(row);
 
-                scrollPane.applyCss();
-                scrollPane.layout();
-                scrollingBox.layout();
-                scrollingBox.applyCss();
-                pageToUse.applyCss();
-                pageToUse.layout();
-                row.layout();
-                row.applyCss();
+            scrollPane.applyCss();
+            scrollPane.layout();
+
+
+
+
+//                scrollingBox.layout();
+//                scrollingBox.applyCss();
+//                pageToUse.applyCss();
+//                pageToUse.layout();
+//                row.layout();
+//                row.applyCss();
 
 //                System.out.println(pageToUse.getBoundsInParent().getHeight() + ", " + pageHeight);
-                if(pageToUse.getBoundsInParent().getHeight() > pageHeight){
-                    System.out.println("NEW PAGE");
-                    pageToUse.removeLastAdded();
+            if(pageToUse.getBoundsInParent().getHeight() > pageHeight){
+                System.out.println("NEW PAGE");
+                pageToUse.removeLastAdded();
 
-                    pageToUse = pageToUse.addPageNext();
-                    scrollingBox.getChildren().add(pageToUse);
-                    VBox.setVgrow(pageToUse, Priority.ALWAYS);
-                    GridPane.setVgrow(pageToUse, Priority.ALWAYS);
-                    pageToUse.addRow(row);
+                pageToUse = pageToUse.addPageNext();
+                scrollingBox.getChildren().add(pageToUse);
+                VBox.setVgrow(pageToUse, Priority.ALWAYS);
+                GridPane.setVgrow(pageToUse, Priority.ALWAYS);
+                pageToUse.addRow(row);
 
-                    scrollingBox.layout();
-                    scrollingBox.applyCss();
-                    scrollPane.layout();
-                    scrollPane.applyCss();
+//                    scrollingBox.layout();
+//                    scrollingBox.applyCss();
 
-                    pages.add(pageToUse);
-                }
+
+
+                scrollPane.layout();
+                scrollPane.applyCss();
+
+                pages.add(pageToUse);
             }
+        }
 
 //            pages.forEach(p -> System.out.println(p.getChildren().size()));
-        } catch (
-                InstantiationException |
-                IllegalAccessException |
-                InvocationTargetException |
-                NoSuchMethodException e
-        ) {
-            throw new RuntimeException(e);
-        }
     }
 }
