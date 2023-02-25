@@ -173,6 +173,11 @@ public class ChartController implements Initializable {
                     GridPane.setVgrow(pageToUse, Priority.ALWAYS);
                     pageToUse.addRow(row);
 
+                    scrollingBox.layout();
+                    scrollingBox.applyCss();
+                    scrollPane.layout();
+                    scrollPane.applyCss();
+
                     pages.add(pageToUse);
                 }
             }
