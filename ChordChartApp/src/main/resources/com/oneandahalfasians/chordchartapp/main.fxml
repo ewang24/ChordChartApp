@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.text.Text?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oneandahalfasians.chordchartapp.controller.MainController">
     <MenuBar maxHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -47,6 +48,7 @@
                     </rowConstraints>
                     <children>
                         <Region styleClass="app-center-margin" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Text text="&#x0644;"></Text>
                         <Pane GridPane.columnIndex="1" GridPane.rowIndex="0">
                             <fx:include fx:id="chartView" source="chart/chartListView.fxml" />
                         </Pane>

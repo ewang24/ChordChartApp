@@ -103,6 +103,7 @@ public class SectionRendererHelper {
             Chord anchoredChord = lyric.getAnchorPoint().getChord();
 
             TextField chordText = new TextField(anchoredChord.toString());
+            chordText.setFont(Font.font("calibri", FontWeight.BOLD, 12));
             chordText.getStyleClass().add(CSS.CHORD_TEXT_CLASS);
             chordText.setAlignment(Pos.CENTER);
 

@@ -11,6 +11,7 @@ import java.util.List;
 public class Chord {
     private Key key;
     private Quality quality;
+    private boolean superscriptQuality;
     private List<Extension> extensions = new ArrayList<>();
 
     public Key getKey() {

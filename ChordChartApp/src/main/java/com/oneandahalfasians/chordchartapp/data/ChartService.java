@@ -35,9 +35,9 @@ public class ChartService{
         chart.setEnding(new Outro());
 
         //Make a few lines of lyrics:
-        List<Chord> chordList = (Arrays.asList(new Chord(new Key(KeyLetter.E, Accidental.SHARP), Quality.MAJOR),
+        List<Chord> chordList = (Arrays.asList(new Chord(new Key(KeyLetter.E, Accidental.SHARP), Quality.MAJOR_7TH),
                 new Chord(new Key(KeyLetter.B, Accidental.SHARP), Quality.DOMINANT),
-                new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR, new Extension(Accidental.SHARP, 11))));
+                new Chord(new Key(KeyLetter.A, Accidental.SHARP), Quality.MAJOR_7TH, new Extension(Accidental.SHARP, 11))));
 
         LyricLine lyricLine = new LyricLine();
         lyricLine.getLyricList().addAll(generateLyric( "This is Evan's first song!!!!", chordList, lyricLine));
