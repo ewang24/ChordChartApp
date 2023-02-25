@@ -15,6 +15,7 @@ public class ChordChartApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        System.out.println('\u00F8');
         ChartService chartService = ChartService.getInstance();
         chartService.generateChart_TEST();
 

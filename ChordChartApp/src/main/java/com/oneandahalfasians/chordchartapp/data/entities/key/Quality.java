@@ -1,14 +1,14 @@
 package com.oneandahalfasians.chordchartapp.data.entities.key;
 
 public enum Quality {
-    MAJOR_7TH("\uE873", true),
+    MAJOR_7TH("△", true),
     MINOR("m", true),
-    MINOR_7TH(""+'\uE874', true),
+    MINOR_7TH("-", true),
     DOMINANT("7", true),
     SUSPENDED("sus", true),
-    HALF_DIMINISHED("" + '\uE871', true),
-    DIMINISHED("" + '\uE870', true),
-    AUGMENTED("" + '\uE872', true),
+    HALF_DIMINISHED("ø", true),
+    DIMINISHED("°", true),
+    AUGMENTED("+", true),
     ALTERED("alt", true),
     MIN_MAJOR_7TH(MINOR_7TH.getSymbol() + MAJOR_7TH.getSymbol(true), true),
     SLASH ("" + '\uE87B', false);
