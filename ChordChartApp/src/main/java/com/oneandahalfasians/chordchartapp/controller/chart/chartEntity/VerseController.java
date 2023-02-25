@@ -12,6 +12,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -26,10 +28,12 @@ public class VerseController extends EntityController implements Initializable {
     /*
         FXML Fields
      */
-    @FXML
+//    @FXML
+
+    private VBox mainContainer;
     public ChartBodyBox verseBox;
 
-    @FXML
+//    @FXML
     private Text header;
 
     /*
@@ -40,6 +44,10 @@ public class VerseController extends EntityController implements Initializable {
     private final ChartEntityOptionsModel options;
 
     public VerseController(ChartEntity verse, ChartEntityOptionsModel options) {
+        this.mainContainer = new VBox();
+        this.header = new Text();
+        this.verseBox = new ChartBodyBox();
+
         if (!(verse instanceof Verse)) {
             throw new RuntimeException("Error!");
         }
@@ -60,15 +68,25 @@ public class VerseController extends EntityController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SectionRendererHelper.initializeSectionContents(verse, verse.getLines(), header, verseBox);
 
-        if(options.isShouldFocus()){
-            verseBox.getFirstRow().getFirstColumn().focusLast();
-        }
     }
 
     @Override
     public String getFxmlFileName() {
         return "chart/chartEntity/verse.fxml";
+    }
+
+    @Override
+    public Parent getContents() {
+        SectionRendererHelper.initializeSectionContents(verse, verse.getLines(), header, verseBox);
+
+        if(options.isShouldFocus()){
+            verseBox.getFirstRow().getFirstColumn().focusLast();
+        }
+
+        mainContainer.getChildren().add(header);
+        mainContainer.getChildren().add(verseBox);
+
+        return mainContainer;
     }
 }

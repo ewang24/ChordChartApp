@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -145,10 +146,11 @@ public class ChartController implements Initializable {
                                         new ChartEntityOptionsModel(false, false)
                                 );
 
-                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load(controller.getFxmlFileName()));
-                fxmlLoader.setController(controller);
-                VBox row = fxmlLoader.<VBox>load();
+//                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load(controller.getFxmlFileName()));
+//                fxmlLoader.setController(controller);
+//                VBox row = fxmlLoader.<VBox>load();
 
+                Parent row = controller.getContents();
                 pageToUse.addRow(row);
 
                 scrollPane.applyCss();
@@ -160,9 +162,7 @@ public class ChartController implements Initializable {
                 row.layout();
                 row.applyCss();
 
-
-
-                System.out.println(pageToUse.getBoundsInParent().getHeight() + ", " + pageHeight);
+//                System.out.println(pageToUse.getBoundsInParent().getHeight() + ", " + pageHeight);
                 if(pageToUse.getBoundsInParent().getHeight() > pageHeight){
                     System.out.println("NEW PAGE");
                     pageToUse.removeLastAdded();
@@ -182,7 +182,7 @@ public class ChartController implements Initializable {
                 }
             }
 
-            pages.forEach(p -> System.out.println(p.getChildren().size()));
+//            pages.forEach(p -> System.out.println(p.getChildren().size()));
         } catch (
                 InstantiationException |
                 IllegalAccessException |
