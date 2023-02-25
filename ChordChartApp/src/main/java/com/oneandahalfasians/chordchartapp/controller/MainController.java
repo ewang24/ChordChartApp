@@ -39,7 +39,7 @@ public class MainController implements Initializable {
     public void addVerse(ActionEvent e){
         try {
             var verse = ChartService.getInstance().addVerse();
-            chartViewController.addChild(verse, true, true);
+            chartViewController.addChild(verse, true, true, 0);
         } catch (IOException ex) {
             System.out.println("You dun goofed:\n" + ex.getMessage());
             ex.printStackTrace();
@@ -50,7 +50,7 @@ public class MainController implements Initializable {
     public void addChorus(ActionEvent e){
         try {
             var newChorus = ChartService.getInstance().addChorus();
-            chartViewController.addChild(newChorus, true, true);
+            chartViewController.addChild(newChorus, true, true, 0 );
         } catch (IOException ex) {
             System.out.println("You dun goofed.\n" + ex.getMessage());
         }

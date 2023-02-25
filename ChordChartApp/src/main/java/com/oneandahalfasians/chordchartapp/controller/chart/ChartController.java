@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
@@ -102,7 +103,7 @@ public class ChartController implements Initializable {
         }
 
         try {
-            addChild(null, false, false);
+            addChild(null, false, false, 0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -112,7 +113,7 @@ public class ChartController implements Initializable {
 //        addChild(newEntity, false, false);
     }
 
-    public void addChild(ChartEntity newEntity, boolean shouldFocus, boolean shouldAddNewEmptyElement) throws IOException {
+    public void addChild(ChartEntity newEntity, boolean shouldFocus, boolean shouldAddNewEmptyElement, int startingIndex) throws IOException {
         if(pageHeight == 0.0){
             throw new RuntimeException("Layout is invalid!");
         }
@@ -126,16 +127,19 @@ public class ChartController implements Initializable {
             pageToUse = pages.get(pages.size() - 1);
         }
 
-        scrollingBox.getChildren().add(pageToUse);
-        scrollingBox.layout();
-        scrollingBox.applyCss();
-        scrollPane.layout();
-        scrollPane.applyCss();
+        if(startingIndex == 0){
+            scrollingBox.getChildren().add(pageToUse);
+            scrollingBox.layout();
+            scrollingBox.applyCss();
+            scrollPane.layout();
+            scrollPane.applyCss();
+        }
 
         List<ChartEntity> chartEntityList = chart.getEntityList();
 
         //Create a row for each of the chart entities (verses, choruses, bridge, etc.)
-        for (ChartEntity chartEntity : chartEntityList) {
+        for (int i = startingIndex; i < chartEntityList.size(); i++) {
+            ChartEntity chartEntity = chartEntityList.get(i);
 //                EntityController controller =
 //                        chartEntity.getViewClass()
 //                                .getDeclaredConstructor(ChartEntity.class, ChartEntityOptionsModel.class)
@@ -155,8 +159,6 @@ public class ChartController implements Initializable {
             scrollPane.layout();
 
 
-
-
 //                scrollingBox.layout();
 //                scrollingBox.applyCss();
 //                pageToUse.applyCss();
@@ -165,7 +167,7 @@ public class ChartController implements Initializable {
 //                row.applyCss();
 
 //                System.out.println(pageToUse.getBoundsInParent().getHeight() + ", " + pageHeight);
-            if(pageToUse.getBoundsInParent().getHeight() > pageHeight){
+            if (pageToUse.getBoundsInParent().getHeight() > pageHeight) {
                 System.out.println("NEW PAGE");
                 pageToUse.removeLastAdded();
 
@@ -179,11 +181,24 @@ public class ChartController implements Initializable {
 //                    scrollingBox.applyCss();
 
 
-
                 scrollPane.layout();
                 scrollPane.applyCss();
 
                 pages.add(pageToUse);
+
+                int finalI = i;
+                if(startingIndex == 0){
+                    Platform.runLater(() -> {
+                        try {
+                            System.out.println("keep rendering");
+                            addChild(null, false, false, finalI);
+                        } catch (IOException e) {
+                            System.err.println(Arrays.toString(e.getStackTrace()));
+                            throw new RuntimeException(e);
+                        }
+                    });
+                    break;
+                }
             }
         }
 
