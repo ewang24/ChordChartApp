@@ -35,11 +35,11 @@ public class SectionRendererHelper {
      */
     public static void initializeSectionContents(ChartEntity section, List<LyricLine<Lyric>> lines, Text header, ChartBodyBox contentBox) {
 
-        String cssLayout = """
+        String cssLayout = ""; /*"""
                 -fx-border-color: red;
                 -fx-border-width: 3;
                 -fx-border-style: dashed;
-                """;
+                """;*/
 
 //        contentBox.setStyle(cssLayout);
 

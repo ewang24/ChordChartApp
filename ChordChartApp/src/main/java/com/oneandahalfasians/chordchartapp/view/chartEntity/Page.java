@@ -23,7 +23,7 @@ public class Page extends VBox {
         this.previousPage = previousPage;
         this.nextPage = nextPage;
         this.setMinHeight(totalHeight);
-        this.setMaxHeight(Double.MAX_VALUE);
+        this.setMaxHeight(totalHeight * 1.1);
         String cssLayout = """
                 -fx-border-color: black;
                 -fx-border-width: 1;

@@ -126,6 +126,10 @@ public class ChartController implements Initializable {
         }
 
         scrollingBox.getChildren().add(pageToUse);
+        scrollingBox.layout();
+        scrollingBox.applyCss();
+        scrollPane.layout();
+        scrollPane.applyCss();
 
         try {
 
@@ -149,8 +153,17 @@ public class ChartController implements Initializable {
 
                 scrollPane.applyCss();
                 scrollPane.layout();
+                scrollingBox.layout();
+                scrollingBox.applyCss();
+                pageToUse.applyCss();
+                pageToUse.layout();
+                row.layout();
+                row.applyCss();
 
-                if(pageToUse.getHeight() > pageHeight){
+
+
+                System.out.println(pageToUse.getBoundsInParent().getHeight() + ", " + pageHeight);
+                if(pageToUse.getBoundsInParent().getHeight() > pageHeight){
                     System.out.println("NEW PAGE");
                     pageToUse.removeLastAdded();
 
