@@ -26,7 +26,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
 public class ChartController implements Initializable {
@@ -105,8 +107,6 @@ public class ChartController implements Initializable {
     }
 
     public void addChild(ChartEntity newEntity, boolean shouldFocus, boolean shouldAddNewEmptyElement) throws IOException {
-        Map<String, FXMLLoader> loaderMap = new HashMap<>();
-
         if(pageHeight == 0.0){
             throw new RuntimeException("Layout is invalid!");
         }
@@ -136,17 +136,8 @@ public class ChartController implements Initializable {
                                         new ChartEntityOptionsModel(false, false)
                                 );
 
-                String fxmlFileName = controller.getFxmlFileName();
-
-                FXMLLoader fxmlLoader;
-                if(!loaderMap.containsKey(fxmlFileName)){
-                    fxmlLoader = new FXMLLoader(FXMLHelper.load(fxmlFileName));
-                    fxmlLoader.setController(controller);
-                    loaderMap.put(fxmlFileName, fxmlLoader);
-                }else{
-                    fxmlLoader = loaderMap.get(fxmlFileName);
-                }
-
+                FXMLLoader fxmlLoader = new FXMLLoader(FXMLHelper.load(controller.getFxmlFileName()));
+                fxmlLoader.setController(controller);
                 VBox row = fxmlLoader.<VBox>load();
 
                 pageToUse.addRow(row);
