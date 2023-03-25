@@ -9,6 +9,7 @@ module com.oneandahalfasians.chordchartapp {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires annotations;
+    requires com.google.common;
 
     opens com.oneandahalfasians.chordchartapp to javafx.fxml;
     exports com.oneandahalfasians.chordchartapp;

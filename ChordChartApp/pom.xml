@@ -90,12 +90,24 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.common/google-collect -->
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
-            <groupId>com.google.common</groupId>
-            <artifactId>google-collect</artifactId>
-            <version>1.0-rc1</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.1-jre</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava-collections -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-collections</artifactId>
+            <version>r03</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sonatype.sisu</groupId>
+            <artifactId>sisu-guava</artifactId>
+            <version>31.1-jre</version>
+        </dependency>
+
     </dependencies>
 
     <build>
