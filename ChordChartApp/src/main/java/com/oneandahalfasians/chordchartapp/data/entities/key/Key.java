@@ -1,5 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data.entities.key;
 
+import java.util.HashMap;
+
 public class Key {
 
     private KeyLetter keyLetter;
@@ -34,5 +36,11 @@ public class Key {
     @Override
     public String toString() {
         return keyLetter.toString() + accidental.getSymbol();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Key other = (Key) obj;
+        return this.keyLetter.equals(other.keyLetter) && this.accidental.equals(other.accidental);
     }
 }

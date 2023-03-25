@@ -7,14 +7,34 @@ import com.oneandahalfasians.chordchartapp.data.entities.line.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.DoubleBinaryOperator;
 
 public class ChartService{
 
     private Chart chart;
+    public static Key[] keyCircle;
 
     private static ChartService chartServiceInstance;
     private ChartService(){
         chart = new Chart();
+        keyCircle = new Key[17];
+        keyCircle[0] = new Key(KeyLetter.C);
+        keyCircle[1] = new Key(KeyLetter.C, Accidental.SHARP);
+        keyCircle[2] = new Key(KeyLetter.D, Accidental.FLAT);
+        keyCircle[3] = new Key(KeyLetter.D);
+        keyCircle[4] = new Key(KeyLetter.D, Accidental.SHARP);
+        keyCircle[5] = new Key(KeyLetter.E, Accidental.FLAT);
+        keyCircle[6] = new Key(KeyLetter.E);
+        keyCircle[7] = new Key(KeyLetter.F);
+        keyCircle[8] = new Key(KeyLetter.F, Accidental.SHARP);
+        keyCircle[9] = new Key(KeyLetter.G, Accidental.FLAT);
+        keyCircle[10] = new Key(KeyLetter.G);
+        keyCircle[11] = new Key(KeyLetter.G, Accidental.SHARP);
+        keyCircle[12] = new Key(KeyLetter.A, Accidental.FLAT);
+        keyCircle[13] = new Key(KeyLetter.A);
+        keyCircle[14] = new Key(KeyLetter.A, Accidental.SHARP);
+        keyCircle[15] = new Key(KeyLetter.B, Accidental.FLAT);
+        keyCircle[16] = new Key(KeyLetter.B );
     }
 
     public static ChartService getInstance(){
@@ -193,6 +213,11 @@ public class ChartService{
     }
 
     public void deleteChord() {
+
+    }
+
+    public void transpose(Key target) {
+        Key currentKey = chart.getKeyList().get(0);
 
     }
 }
