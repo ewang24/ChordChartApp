@@ -1,6 +1,7 @@
 package com.oneandahalfasians.chordchartapp.data;
 
 import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.oneandahalfasians.chordchartapp.data.entities.*;
 import com.oneandahalfasians.chordchartapp.data.entities.key.*;
 import com.oneandahalfasians.chordchartapp.data.entities.line.*;
@@ -17,6 +18,7 @@ public class ChartService{
 
     private static ChartService chartServiceInstance;
     private ChartService(){
+        BiMap<Key, Integer> keyMap = HashBiMap.create();
         chart = new Chart();
         keyCircle = new Key[17];
         keyCircle[0] = new Key(KeyLetter.C);

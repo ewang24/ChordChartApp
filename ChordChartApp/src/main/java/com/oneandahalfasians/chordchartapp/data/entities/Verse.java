@@ -37,6 +37,11 @@ public class Verse extends ChartEntity {
         return VerseController.class;
     }
 
+    @Override
+    public List<LyricLine<Lyric>> getLyricLines() {
+        return getLines();
+    }
+
 //    @Override
 //    public Node render(ChartEntityOptionsModel options) {
 //        try {

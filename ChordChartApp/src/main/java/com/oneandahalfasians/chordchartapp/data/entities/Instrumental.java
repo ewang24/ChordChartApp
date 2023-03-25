@@ -48,6 +48,11 @@ public class Instrumental extends ChartEntity {
         return InstrumentalController.class;
     }
 
+    @Override
+    public List<LyricLine<Lyric>> getLyricLines() {
+        return getLyricLines();
+    }
+
 //    @Override
 //    public Node render(ChartEntityOptionsModel options) {
 //        try {

@@ -38,6 +38,11 @@ public class Chorus extends ChartEntity {
         return ChorusController.class;
     }
 
+    @Override
+    public List<LyricLine<Lyric>> getLyricLines() {
+        return getLyricLines();
+    }
+
     //    @Override
 //    public Node render(ChartEntit) {
 //        try {
