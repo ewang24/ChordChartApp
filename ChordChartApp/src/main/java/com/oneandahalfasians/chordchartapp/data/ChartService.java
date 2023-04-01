@@ -14,30 +14,27 @@ import java.util.function.DoubleBinaryOperator;
 public class ChartService{
 
     private Chart chart;
-    public static Key[] keyCircle;
-
+    public BiMap<Key, Integer> keyMap = HashBiMap.create();
     private static ChartService chartServiceInstance;
     private ChartService(){
-        BiMap<Key, Integer> keyMap = HashBiMap.create();
         chart = new Chart();
-        keyCircle = new Key[17];
-        keyCircle[0] = new Key(KeyLetter.C);
-        keyCircle[1] = new Key(KeyLetter.C, Accidental.SHARP);
-        keyCircle[2] = new Key(KeyLetter.D, Accidental.FLAT);
-        keyCircle[3] = new Key(KeyLetter.D);
-        keyCircle[4] = new Key(KeyLetter.D, Accidental.SHARP);
-        keyCircle[5] = new Key(KeyLetter.E, Accidental.FLAT);
-        keyCircle[6] = new Key(KeyLetter.E);
-        keyCircle[7] = new Key(KeyLetter.F);
-        keyCircle[8] = new Key(KeyLetter.F, Accidental.SHARP);
-        keyCircle[9] = new Key(KeyLetter.G, Accidental.FLAT);
-        keyCircle[10] = new Key(KeyLetter.G);
-        keyCircle[11] = new Key(KeyLetter.G, Accidental.SHARP);
-        keyCircle[12] = new Key(KeyLetter.A, Accidental.FLAT);
-        keyCircle[13] = new Key(KeyLetter.A);
-        keyCircle[14] = new Key(KeyLetter.A, Accidental.SHARP);
-        keyCircle[15] = new Key(KeyLetter.B, Accidental.FLAT);
-        keyCircle[16] = new Key(KeyLetter.B );
+        keyMap.put(new Key(KeyLetter.C), 0);
+        keyMap.put(new Key(KeyLetter.C, Accidental.SHARP), 1);
+        keyMap.put(new Key(KeyLetter.D, Accidental.FLAT), 2);
+        keyMap.put(new Key(KeyLetter.D), 3);
+        keyMap.put(new Key(KeyLetter.D, Accidental.SHARP), 4);
+        keyMap.put(new Key(KeyLetter.E, Accidental.FLAT), 5);
+        keyMap.put(new Key(KeyLetter.E), 6);
+        keyMap.put(new Key(KeyLetter.F), 7);
+        keyMap.put(new Key(KeyLetter.F, Accidental.SHARP), 8);
+        keyMap.put(new Key(KeyLetter.G, Accidental.FLAT), 9);
+        keyMap.put(new Key(KeyLetter.G), 10);
+        keyMap.put(new Key(KeyLetter.G, Accidental.SHARP), 11);
+        keyMap.put(new Key(KeyLetter.A, Accidental.FLAT), 12);
+        keyMap.put(new Key(KeyLetter.A), 13);
+        keyMap.put(new Key(KeyLetter.A, Accidental.SHARP), 14);
+        keyMap.put(new Key(KeyLetter.B, Accidental.FLAT), 15);
+        keyMap.put(new Key(KeyLetter.B ), 16);
     }
 
     public static ChartService getInstance(){
@@ -221,6 +218,19 @@ public class ChartService{
 
     public void transpose(Key target) {
         Key currentKey = chart.getKeyList().get(0);
-
+        int diff = keyMap.get(target) - keyMap.get(currentKey);
+        for (ChartEntity chartEntity : chart.getEntityList()) {
+            for (LyricLine<Lyric> lyricLine : chartEntity.getLyricLines()) {
+                for (Lyric lyric : lyricLine.getLyricList()) {
+                    if (lyric.hasAnchorPoint() && lyric.getAnchorPoint().getChord() != null) {
+                        Chord currentChord = lyric.getAnchorPoint().getChord();
+                        Key currentChordKey = currentChord.getKey();
+                        int mapValue = keyMap.get(currentChordKey);
+                        mapValue = (mapValue + diff) % 17;
+                        currentChord.setKey(keyMap.inverse().get(mapValue));
+                    }
+                }
+            }
+        }
     }
 }

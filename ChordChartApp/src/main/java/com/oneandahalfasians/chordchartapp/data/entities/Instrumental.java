@@ -50,7 +50,7 @@ public class Instrumental extends ChartEntity {
 
     @Override
     public List<LyricLine<Lyric>> getLyricLines() {
-        return getLyricLines();
+        return chordLines;
     }
 
 //    @Override

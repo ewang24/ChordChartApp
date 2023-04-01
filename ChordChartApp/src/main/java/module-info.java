@@ -10,6 +10,7 @@ module com.oneandahalfasians.chordchartapp {
     requires com.almasb.fxgl.all;
     requires annotations;
     requires com.google.common;
+    requires org.junit.jupiter.api;
 
     opens com.oneandahalfasians.chordchartapp to javafx.fxml;
     exports com.oneandahalfasians.chordchartapp;

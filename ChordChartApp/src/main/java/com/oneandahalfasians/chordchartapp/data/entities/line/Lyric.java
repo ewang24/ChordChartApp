@@ -26,6 +26,9 @@ public class Lyric {
         this.lyric = lyric;
     }
 
+    public boolean hasAnchorPoint() {
+        return getAnchorPoint() != null;
+    }
     public AnchorPoint getAnchorPoint() {
         return anchorPoint;
     }

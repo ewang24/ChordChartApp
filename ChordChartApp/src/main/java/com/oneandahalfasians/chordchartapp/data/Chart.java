@@ -28,7 +28,7 @@ public class Chart {
     private Outro outro;
 
     //This is all of the possible chart elements (verses, choruses, etc)
-    List<ChartEntity> entityList = new ArrayList<>();
+    private List<ChartEntity> entityList = new ArrayList<>();
 
 
     public int getMaxVerse() {
