@@ -1,4 +1,4 @@
-package test.com.oneandahalfasians.chordchartapp.data;
+package com.oneandahalfasians.chordchartapp.data;
 
 import com.oneandahalfasians.chordchartapp.data.ChartService;
 
@@ -22,7 +22,7 @@ class ChartServiceTest {
 
     @Test
     void transpose() {
-
+        assertEquals(1, 1);
     }
 
 }

@@ -12,11 +12,12 @@ module com.oneandahalfasians.chordchartapp {
     requires com.google.common;
     requires org.junit.jupiter.api;
 
-    opens com.oneandahalfasians.chordchartapp to javafx.fxml;
+    opens com.oneandahalfasians.chordchartapp to javafx.fxml, org.junit.platform.commons;
     exports com.oneandahalfasians.chordchartapp;
     exports com.oneandahalfasians.chordchartapp.controller;
     opens com.oneandahalfasians.chordchartapp.controller to javafx.fxml;
     opens com.oneandahalfasians.chordchartapp.controller.chart to javafx.fxml;
     opens com.oneandahalfasians.chordchartapp.controller.chart.chartEntity to javafx.fxml;
     opens com.oneandahalfasians.chordchartapp.view.chartEntity to javafx.fxml;
+    opens com.oneandahalfasians.chordchartapp.data to org.junit.platform.commons;
 }
